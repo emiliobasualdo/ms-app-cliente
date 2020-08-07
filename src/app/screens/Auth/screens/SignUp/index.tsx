@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Keyboard, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Keyboard, TouchableWithoutFeedback, ScrollView, View } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import i18next from 'i18next';
 import { Formik } from 'formik';
@@ -46,7 +46,7 @@ function SignUp({ navigation }: Navigation) {
             contentContainerStyle={styles.container}
             style={styles.stretchAndFlex}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={[styles.stretchAndFlex, styles.form]}>
-              <>
+              <View>
                 <CustomTextInputFormikField
                   animated
                   label={i18next.t('SIGNUP:NAME')}
@@ -115,7 +115,7 @@ function SignUp({ navigation }: Navigation) {
                   title={i18next.t('SIGNUP:SIGN_UP')}
                   disabled={hasSignUpError || !isValid}
                 />
-              </>
+              </View>
             </TouchableWithoutFeedback>
           </ScrollView>
           {isIos && <KeyboardSpacer />}

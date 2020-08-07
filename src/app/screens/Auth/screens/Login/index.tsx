@@ -27,7 +27,7 @@ function Login({ navigation }: Navigation) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
       <Formik onSubmit={handleLogin} initialValues={LOGIN_INITIAL_VALUES}>
         {({ handleSubmit, isValid }) => (
-          <>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <View style={styles.form}>
               <CustomTextInputFormikField
                 animated
@@ -64,7 +64,7 @@ function Login({ navigation }: Navigation) {
               style={styles.formButton}
               title={i18next.t('LOGIN:SIGN_UP')}
             />
-          </>
+          </View>
         )}
       </Formik>
     </TouchableWithoutFeedback>

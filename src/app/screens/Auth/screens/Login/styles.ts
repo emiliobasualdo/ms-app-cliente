@@ -4,8 +4,8 @@ import { green } from '@constants/colors';
 export default StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'center',
+    flex: 1,
     width: '100%'
   },
   form: {
