@@ -41,7 +41,7 @@ const Navigator = () => {
   const defaultStackConfig = currentUser ? appStackNavConfig : authStackNavConfig;
   return (
     <Stack.Navigator {...defaultStackConfig}>
-      {currentUser ? (hasAccessOnBoarding ? AppStack() : OnBoardingStack()) : AuthStack()}
+      {currentUser ? (hasAccessOnBoarding ? AppStack() : OnBoardingStack()) : OnBoardingStack()}
     </Stack.Navigator>
   );
 };

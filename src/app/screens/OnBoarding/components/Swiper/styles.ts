@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { blue, black, green } from '@constants/colors';
+import { blue, black, brandGray } from '@constants/colors';
 
 const DOT_SIZE = 12;
 const ACTIVE_DOT_SIZE = 15;
@@ -8,7 +8,7 @@ const BORDER_RADIUS = 10;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: green
+    backgroundColor: brandGray
   },
   pagination: {
     position: 'absolute',

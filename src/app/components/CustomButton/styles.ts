@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { transparent, black, green, gray, white } from '@constants/colors';
+import { transparent, black, green, gray, white, brandBlue } from '@constants/colors';
 
 const iconSize = 20;
 
@@ -49,5 +49,14 @@ export default StyleSheet.create({
   },
   greenContent: {
     color: white
+  },
+  primary: {
+    borderWidth: 1,
+    borderColor: brandBlue,
+    color: brandBlue,
+    alignSelf: 'center',
+    width: '45%',
+    height: 45,
+    borderRadius: 20
   }
 });

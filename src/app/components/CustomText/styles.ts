@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import fonts from '@config/fonts';
-import { blue, white, green, gray, transparent, red } from '@constants/colors';
+import { blue, white, green, gray, transparent, red, brandBlue, brandDarkBlue } from '@constants/colors';
 import { SIZES } from '@constants/fonts';
 import { moderateScale } from '@utils/scalingUtils';
 import { StringObject, NumberObject } from '@interfaces/globalInterfaces';
@@ -25,6 +25,12 @@ export default StyleSheet.create({
   semiBold: fonts.semiBoldFont,
   bold: fonts.boldFont,
   italic: fonts.baseItalicFont,
+  primary: {
+    color: brandBlue
+  },
+  brandDarkBlue: {
+    color: brandDarkBlue
+  },
   center: {
     textAlign: 'center'
   },
@@ -47,6 +53,9 @@ export default StyleSheet.create({
     medium: SIZES.MEDIUM,
     xmedium: SIZES.XMEDIUM,
     big: SIZES.BIG,
-    xbig: SIZES.XBIG
+    xbig: SIZES.XBIG,
+    xxbig: SIZES.XXBIG,
+    large: SIZES.LARGE,
+    xlarge: SIZES.XLARGE
   })
 });

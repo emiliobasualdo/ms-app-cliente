@@ -1,11 +1,11 @@
 import React from 'react';
 
-import FirstScreen from './components/FirstScreen';
-import SecondScreen from './components/SecondScreen';
-import ThirdScreen from './components/ThirdScreen';
+import OnBoardingSteps from './components/OnBoardingSteps';
 
 export default [
-  <FirstScreen key={'FirstScreen'} />,
-  <SecondScreen key={'SecondScreen'} />,
-  <ThirdScreen key={'ThirdScreen'} />
+  <OnBoardingSteps key={'FirstScreen'} step={1} />,
+  <OnBoardingSteps key={'SecondScreen'} step={2} />,
+  <OnBoardingSteps key={'ThirdScreen'} step={3} />
+  // <OnBoardingSteps key={'FourthScreen'} step={4} />
 ];
+console.disableYellowBox = true;
