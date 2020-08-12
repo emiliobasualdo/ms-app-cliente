@@ -8,4 +8,3 @@ export default [
   <OnBoardingSteps key={'ThirdScreen'} step={3} />
   // <OnBoardingSteps key={'FourthScreen'} step={4} />
 ];
-console.disableYellowBox = true;
