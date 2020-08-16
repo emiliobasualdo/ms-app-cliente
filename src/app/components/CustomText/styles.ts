@@ -1,6 +1,16 @@
 import { StyleSheet } from 'react-native';
 import fonts from '@config/fonts';
-import { blue, white, green, gray, transparent, red, brandBlue, brandDarkBlue } from '@constants/colors';
+import {
+  blue,
+  white,
+  green,
+  gray,
+  transparent,
+  red,
+  brandBlue,
+  brandDarkBlue,
+  brandGray
+} from '@constants/colors';
 import { SIZES } from '@constants/fonts';
 import { moderateScale } from '@utils/scalingUtils';
 import { StringObject, NumberObject } from '@interfaces/globalInterfaces';
@@ -30,6 +40,9 @@ export default StyleSheet.create({
   },
   brandDarkBlue: {
     color: brandDarkBlue
+  },
+  brandGray: {
+    color: brandGray
   },
   center: {
     textAlign: 'center'

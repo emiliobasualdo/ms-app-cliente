@@ -1,4 +1,5 @@
 export const FIELDS = {
+  prefix: 'prefix',
   name: 'name',
   surname: 'surname',
   birthDate: 'birthDate',
@@ -9,8 +10,8 @@ export const FIELDS = {
 };
 
 export const LOGIN_INITIAL_VALUES = {
-  [FIELDS.email]: '',
-  [FIELDS.password]: ''
+  [FIELDS.prefix]: '+54',
+  [FIELDS.phoneNumber]: ''
 };
 
 export const SIGNUP_INITIAL_VALUES = {

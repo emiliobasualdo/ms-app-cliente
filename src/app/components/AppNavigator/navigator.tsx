@@ -8,6 +8,7 @@ import { authStackNavConfig, appStackNavConfig, drawerStackNavConfig } from '@co
 import { inferRoute } from '@utils/navUtils';
 import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
+import VerificationCode from '@authScreens/VerificationCode';
 import OnBoarding from '@screens/OnBoarding';
 import Home from '@screens/Home';
 
@@ -17,6 +18,7 @@ const AuthStack = () => (
   <>
     {inferRoute(Stack)({ [Routes.Login]: Login })}
     {inferRoute(Stack)({ [Routes.SignUp]: SignUp })}
+    {inferRoute(Stack)({ [Routes.VerificationCode]: VerificationCode })}
   </>
 );
 
@@ -41,7 +43,7 @@ const Navigator = () => {
   const defaultStackConfig = currentUser ? appStackNavConfig : authStackNavConfig;
   return (
     <Stack.Navigator {...defaultStackConfig}>
-      {currentUser ? (hasAccessOnBoarding ? AppStack() : OnBoardingStack()) : OnBoardingStack()}
+      {currentUser ? (hasAccessOnBoarding ? AppStack() : OnBoardingStack()) : AuthStack()}
     </Stack.Navigator>
   );
 };

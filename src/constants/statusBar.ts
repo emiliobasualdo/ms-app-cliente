@@ -1,10 +1,21 @@
-import { blue, white } from './colors';
+import { blue, white, translucent } from './colors';
+
+const DARK_CONTENT = 'dark-content';
+const LIGHT_CONTENT = 'light-content';
+
+const commonTransparentConfig = {
+  translucent: true,
+  backgroundColor: translucent
+};
 
 const statusBarConfig = {
   transparentStatusBar: {
-    barStyle: 'dark-content',
-    translucent: true,
-    backgroundColor: 'rgba(255, 255, 255, 0.6)'
+    barStyle: DARK_CONTENT,
+    ...commonTransparentConfig
+  },
+  transparentStatusBarWhite: {
+    barStyle: LIGHT_CONTENT,
+    ...commonTransparentConfig
   },
   blueStatusBar: { barStyle: 'light-content', backgroundColor: blue },
   whiteStatusBar: { barStyle: 'dark-content', backgroundColor: white }

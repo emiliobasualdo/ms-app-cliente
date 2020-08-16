@@ -26,7 +26,8 @@ export const VARIANTS = [
   'xbig',
   'error',
   'primary',
-  'brandDarkBlue'
+  'brandDarkBlue',
+  'brandGray'
 ];
 
 export interface VariantsInterface {
@@ -50,6 +51,7 @@ export interface VariantsInterface {
   error?: boolean;
   primary?: boolean;
   brandDarkBlue?: boolean;
+  brandGray?: boolean;
 }
 
 export interface CustomTextProps extends VariantsInterface {

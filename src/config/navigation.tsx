@@ -1,8 +1,9 @@
 import i18next from 'i18next';
 import Routes from '@constants/routes';
-import { blue, white } from '@constants/colors';
+import { blue, brandDarkBlue, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
+import { SIZES } from '@constants/fonts';
 
 import fonts from './fonts';
 
@@ -22,6 +23,20 @@ const defaultNavOptions = ({ route }: Navigation) => ({
     color: white
   },
   headerTintColor: white
+});
+
+const transparentHeader = (fontColor: string) => ({
+  headerStyle: {
+    backgroundColor: 'transparent',
+    borderBottomWidth: 0
+  },
+  headerTitleStyle: {
+    ...fonts.boldFont,
+    color: fontColor
+  },
+  headerBackTitle: ' ',
+  headerTintColor: fontColor,
+  headerTransparent: true
 });
 
 export const appStackNavConfig = {
@@ -46,7 +61,20 @@ export const appScreensNavOptions = {
   // TODO: Add here the screens nav options that changes with respect to
   // the default ones defined in defaultNavOptions, for example...
   [Routes.Login]: {
-    headerShown: false
+    headerTitle: 'Código de verificación',
+    ...transparentHeader(brandDarkBlue),
+    headerTitleStyle: {
+      fontSize: SIZES.XXBIG,
+      fontWeight: '600'
+    }
+  },
+  [Routes.VerificationCode]: {
+    headerTitle: 'Código de verificación',
+    ...transparentHeader(brandDarkBlue),
+    headerTitleStyle: {
+      fontSize: SIZES.XXBIG,
+      fontWeight: '600'
+    }
   },
   [Routes.OnBoarding]: {
     headerShown: false
@@ -58,7 +86,7 @@ export const appScreensNavOptions = {
 
 export const statusBarStyles = {
   // TODO: Change these styles to customize the status bar
-  [Routes.Login]: statusBarConfig.blueStatusBar,
+  [Routes.Login]: statusBarConfig.transparentStatusBar,
   [Routes.SignUp]: statusBarConfig.blueStatusBar,
   [Routes.Home]: statusBarConfig.blueStatusBar,
   default: statusBarConfig.transparentStatusBar
