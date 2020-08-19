@@ -7,7 +7,10 @@ const Routes: StringObject = {
   OnBoarding: 'OnBoarding',
   App: 'App',
   Home: 'Home',
-  VerificationCode: 'VerificationCode'
+  VerificationCode: 'VerificationCode',
+  StepTwo: 'StepTwo',
+  SignUpSuccess: 'SignUpSuccess',
+  Welcome: 'Welcome'
 };
 
 export default Routes;

@@ -1,18 +1,22 @@
 import React from 'react';
 import { View } from 'react-native';
 import i18next from 'i18next';
+import { useNavigation } from '@react-navigation/native';
 // import CustomButton from '@components/CustomButton';
 import CustomModal from '@components/CustomModal';
+import Routes from '@constants/routes';
 
 import { FooterProps } from './interface';
 // import { getScreensButtonsInfo } from './buttonsInfo';
 import styles from './styles';
+
 import '../../../../i18n';
 
 function Footer(props: FooterProps) {
+  const navigation = useNavigation();
   // const { firstButton, secondButton } = getScreensButtonsInfo(props);
   const { screenIndex } = props;
-  const handleButton = () => {};
+  const handleButton = () => navigation.navigate(Routes.Login);
   return (
     <View style={styles.buttons}>
       <CustomModal

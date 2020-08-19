@@ -51,9 +51,26 @@ export default StyleSheet.create({
     color: white
   },
   primary: {
+    color: white,
+    backgroundColor: brandBlue,
+    alignSelf: 'center',
+    width: '45%',
+    height: 45,
+    borderRadius: 20
+  },
+  secondary: {
     borderWidth: 1,
     borderColor: brandBlue,
+    backgroundColor: white,
     color: brandBlue,
+    alignSelf: 'center',
+    width: '45%',
+    height: 45,
+    borderRadius: 20
+  },
+  tertiary: {
+    color: brandBlue,
+    backgroundColor: white,
     alignSelf: 'center',
     width: '45%',
     height: 45,

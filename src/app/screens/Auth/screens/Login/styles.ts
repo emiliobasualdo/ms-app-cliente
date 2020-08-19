@@ -12,7 +12,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     width: '90%',
     justifyContent: 'center',
-    marginTop: 25
+    marginVertical: 25
   },
   formButton: {
     backgroundColor: green,
@@ -41,5 +41,8 @@ export default StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingTop: 90
+  },
+  buttonText: {
+    color: white
   }
 });

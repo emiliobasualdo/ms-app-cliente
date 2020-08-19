@@ -21,7 +21,14 @@ function CustomModal({ title, subtitle, primaryActionTitle, primaryAction }: Pro
       <CustomText center style={styles.subtitle}>
         {subtitle}
       </CustomText>
-      <CustomButton bold primary title={primaryActionTitle} onPress={primaryAction} style={styles.button} />
+      <CustomButton
+        semiBold
+        primary
+        title={primaryActionTitle}
+        onPress={primaryAction}
+        style={styles.button}
+        textStyle={styles.buttonText}
+      />
     </View>
   );
 }

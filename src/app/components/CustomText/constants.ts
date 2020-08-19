@@ -24,6 +24,9 @@ export const VARIANTS = [
   'xmedium',
   'big',
   'xbig',
+  'xxbig',
+  'large',
+  'xlarge',
   'error',
   'primary',
   'brandDarkBlue',
@@ -48,6 +51,9 @@ export interface VariantsInterface {
   xmedium?: boolean;
   big?: boolean;
   xbig?: boolean;
+  xxbig?: boolean;
+  large?: boolean;
+  xlarge?: boolean;
   error?: boolean;
   primary?: boolean;
   brandDarkBlue?: boolean;

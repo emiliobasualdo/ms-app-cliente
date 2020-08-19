@@ -23,7 +23,16 @@ function Login({ navigation }: Navigation) {
   // const handleLogin: (values: any) => void = useCallback(values => dispatch(AuthActions.login(values)), [
   //   dispatch
   // ]);
-  const handleLogin = () => navigation.navigate(Routes.VerificationCode);
+  const handleLogin = () => navigation.navigate(Routes.SignUp);
+  // navigation.navigate('Root', {
+  //   screen: 'Settings',
+  //   params: {
+  //     screen: 'Sound',
+  //     params: {
+  //       screen: 'Media',
+  //     },
+  //   },
+  // });
 
   // const handleGoToSignUp = () => navigation.navigate(Routes.SignUp);
   return (
@@ -65,8 +74,10 @@ function Login({ navigation }: Navigation) {
               <CustomButton
                 onPress={handleLogin}
                 primary
+                semiBold
                 // style={styles.formButton}
                 title={i18next.t('LOGIN:LOG_IN')}
+                textStyle={styles.buttonText}
                 // disabled={hasLoginError || !isValid}
               />
             </View>

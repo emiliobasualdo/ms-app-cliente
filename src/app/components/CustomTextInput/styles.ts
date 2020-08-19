@@ -26,6 +26,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+  secondaryInputContainer: {
+    borderWidth: 0,
+    borderBottomWidth: 1
+  },
   bottomBorderBlue: {
     borderColor: blue
   },
@@ -48,5 +52,8 @@ export default StyleSheet.create({
   errorContainer: {
     height: 15,
     marginTop: 3
+  },
+  secondary: {
+    height: 800
   }
 });

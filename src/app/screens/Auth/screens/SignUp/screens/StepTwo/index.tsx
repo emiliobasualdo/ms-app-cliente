@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback } from 'react';
 import { Keyboard, TouchableWithoutFeedback, ScrollView, View } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
@@ -14,7 +15,7 @@ import * as AuthService from '@services/AuthService';
 import { validationsWrapper, validateRequired, validateOnlyText } from '@utils/validations/validateUtils';
 import Routes from '@constants/routes';
 
-import './i18n';
+import '../../i18n';
 import styles from './styles';
 
 function SignUp({ navigation }: Navigation) {
@@ -30,6 +31,7 @@ function SignUp({ navigation }: Navigation) {
     },
     [signUp]
   );
+  const handleNext = () => navigation.navigate(Routes.SignUpSuccess);
   return (
     <Formik onSubmit={handleSignUp} initialValues={SIGNUP_INITIAL_VALUES}>
       {({ handleSubmit, isValid }) => (
@@ -43,12 +45,15 @@ function SignUp({ navigation }: Navigation) {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={[styles.stretchAndFlex, styles.form]}>
               <View style={styles.inputsContainer}>
                 <CustomText medium brandGray>
-                  {i18next.t('SIGNUP:TITLE')}
+                  {i18next.t('SIGNUP:TITLE_STEP_TWO')}
                 </CustomText>
+                {
+                  // TODO: Matt no te olvides de los validates y los fields
+                }
                 <CustomTextInputFormikField
                   animated
                   secondary
-                  label={i18next.t('SIGNUP:NAME')}
+                  label={i18next.t('SIGNUP:DNI')}
                   name={FIELDS.name}
                   showError={hasSignUpError}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
@@ -56,54 +61,11 @@ function SignUp({ navigation }: Navigation) {
                 <CustomTextInputFormikField
                   secondary
                   animated
-                  label={i18next.t('SIGNUP:SURNAME')}
+                  label={i18next.t('SIGNUP:BIRTH_DATE')}
                   name={FIELDS.surname}
                   showError={hasSignUpError}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
                 />
-                {/* <CustomTextInputFormikField
-                  animated
-                  label={i18next.t('SIGNUP:BIRTH_DATE')}
-                  name={FIELDS.birthDate}
-                  placeholder={i18next.t('SIGNUP:BIRTH_DATE_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                  validate={validateRequired}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  label={i18next.t('SIGNUP:SEX')}
-                  name={FIELDS.sex}
-                  placeholder={i18next.t('SIGNUP:SEX_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                  validate={validationsWrapper([validateRequired, validateOnlyText])}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  keyboardType="email-address"
-                  label={i18next.t('SIGNUP:MAIL')}
-                  name={FIELDS.email}
-                  placeholder={i18next.t('SIGNUP:MAIL_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                  validate={validationsWrapper([validateRequired, validateEmail])}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  showEye
-                  secureTextEntry
-                  label={i18next.t('SIGNUP:PASSWORD')}
-                  name={FIELDS.password}
-                  showError={hasSignUpError}
-                  validate={validationsWrapper([validateRequired, validateMinLength(8)])}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  isOptional
-                  keyboardType="phone-pad"
-                  label={i18next.t('SIGNUP:PHONE_NUMBER')}
-                  name={FIELDS.phoneNumber}
-                  placeholder={i18next.t('SIGNUP:PHONE_NUMBER_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                /> */}
                 {hasSignUpError && (
                   <CustomText error center>
                     {i18next.t('SIGNUP:SIGNUP_FAILURE')}
@@ -113,7 +75,7 @@ function SignUp({ navigation }: Navigation) {
                   primary
                   semiBold
                   textStyle={styles.buttonText}
-                  onPress={handleSubmit}
+                  onPress={handleNext}
                   style={styles.formButton}
                   title={i18next.t('SIGNUP:SIGN_UP')}
                   disabled={hasSignUpError || !isValid}

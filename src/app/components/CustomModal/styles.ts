@@ -22,5 +22,8 @@ export default StyleSheet.create({
   button: {
     position: 'absolute',
     bottom: refRatioScale(40)
+  },
+  buttonText: {
+    color: white
   }
 });

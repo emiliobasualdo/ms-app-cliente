@@ -31,6 +31,7 @@ const CustomTextInput = ({
   showEye,
   style,
   value,
+  secondary,
   ...props
 }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +48,7 @@ const CustomTextInput = ({
         style={[
           multiline ? styles.multilineContainer : styles.inputContainer,
           borderColorStyle(),
+          secondary && styles.secondaryInputContainer,
           inputContainerStyle
         ]}>
         <TextInput

@@ -39,13 +39,17 @@ const transparentHeader = (fontColor: string) => ({
   headerTransparent: true
 });
 
+export const noHeader = {
+  headerShown: false
+};
+
 export const appStackNavConfig = {
   screenOptions: defaultNavOptions
 };
 
 export const authStackNavConfig = {
   screenOptions: defaultNavOptions,
-  initialRouteName: Routes.Login
+  initialRouteName: Routes.Welcome
 };
 
 const defaultDrawerNavOptions = {
@@ -81,13 +85,33 @@ export const appScreensNavOptions = {
   },
   [Routes.Home]: {
     headerTitle: 'Home'
-  }
+  },
+  [Routes.SignUp]: {
+    headerTitle: 'Crear cuenta',
+    ...transparentHeader(brandDarkBlue),
+    headerTitleStyle: {
+      fontSize: SIZES.XXBIG,
+      fontWeight: '600'
+    }
+  },
+  [Routes.StepTwo]: {
+    headerTitle: 'Crear cuenta',
+    ...transparentHeader(brandDarkBlue),
+    headerTitleStyle: {
+      fontSize: SIZES.XXBIG,
+      fontWeight: '600'
+    }
+  },
+  [Routes.SignUpSuccess]: noHeader,
+  [Routes.Welcome]: noHeader
 };
 
 export const statusBarStyles = {
   // TODO: Change these styles to customize the status bar
   [Routes.Login]: statusBarConfig.transparentStatusBar,
-  [Routes.SignUp]: statusBarConfig.blueStatusBar,
+  [Routes.SignUp]: statusBarConfig.transparentStatusBar,
+  [Routes.SignUpSuccess]: statusBarConfig.transparentStatusBarWhite,
+  [Routes.Welcome]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Home]: statusBarConfig.blueStatusBar,
   default: statusBarConfig.transparentStatusBar
 };

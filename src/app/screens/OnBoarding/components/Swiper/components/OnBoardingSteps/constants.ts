@@ -24,5 +24,11 @@ export const STEP_DATA = [
     imageStyle: {
       width: '80%'
     }
+  },
+  {
+    image: quilmeslogo,
+    imageStyle: {
+      width: '80%'
+    }
   }
 ];
