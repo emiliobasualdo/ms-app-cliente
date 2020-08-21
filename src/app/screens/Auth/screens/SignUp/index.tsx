@@ -47,6 +47,8 @@ function SignUp({ navigation }: Navigation) {
                 </CustomText>
                 <CustomTextInputFormikField
                   animated
+                  inputTextStyles={styles.inputTextStyle}
+                  style={styles.input}
                   secondary
                   label={i18next.t('SIGNUP:NAME')}
                   name={FIELDS.name}
@@ -56,6 +58,8 @@ function SignUp({ navigation }: Navigation) {
                 <CustomTextInputFormikField
                   secondary
                   animated
+                  style={styles.input}
+                  inputTextStyles={styles.inputTextStyle}
                   label={i18next.t('SIGNUP:SURNAME')}
                   name={FIELDS.surname}
                   showError={hasSignUpError}

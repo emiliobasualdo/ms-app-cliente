@@ -8,10 +8,10 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 10,
-    paddingTop: 40,
     alignItems: 'center',
     backgroundColor: white,
     width: '100%',
+    paddingVertical: 40,
     borderTopLeftRadius: BORDER_RADIUS,
     borderTopRightRadius: BORDER_RADIUS
   },
@@ -21,7 +21,7 @@ export default StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    bottom: refRatioScale(40)
+    bottom: refRatioScale(25)
   },
   buttonText: {
     color: white

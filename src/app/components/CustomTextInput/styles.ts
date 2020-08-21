@@ -50,7 +50,7 @@ export default StyleSheet.create({
     flex: 1
   },
   errorContainer: {
-    height: 15,
+    height: 20,
     marginTop: 3
   },
   secondary: {

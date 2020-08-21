@@ -68,7 +68,7 @@ export const appScreensNavOptions = {
     headerTitle: 'Código de verificación',
     ...transparentHeader(brandDarkBlue),
     headerTitleStyle: {
-      fontSize: SIZES.XXBIG,
+      fontSize: SIZES.BIG,
       fontWeight: '600'
     }
   },
@@ -76,7 +76,7 @@ export const appScreensNavOptions = {
     headerTitle: 'Código de verificación',
     ...transparentHeader(brandDarkBlue),
     headerTitleStyle: {
-      fontSize: SIZES.XXBIG,
+      fontSize: SIZES.BIG,
       fontWeight: '600'
     }
   },
@@ -90,7 +90,7 @@ export const appScreensNavOptions = {
     headerTitle: 'Crear cuenta',
     ...transparentHeader(brandDarkBlue),
     headerTitleStyle: {
-      fontSize: SIZES.XXBIG,
+      fontSize: SIZES.BIG,
       fontWeight: '600'
     }
   },
@@ -98,7 +98,7 @@ export const appScreensNavOptions = {
     headerTitle: 'Crear cuenta',
     ...transparentHeader(brandDarkBlue),
     headerTitleStyle: {
-      fontSize: SIZES.XXBIG,
+      fontSize: SIZES.BIG,
       fontWeight: '600'
     }
   },

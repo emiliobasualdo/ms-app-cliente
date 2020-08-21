@@ -19,7 +19,7 @@ const CustomButton = (props: CustomButtonProps) => {
       disabled={disabled}>
       {icon && <Image source={icon} resizeMode="contain" style={[styles.icon, iconStyle]} />}
       {title && (
-        <CustomText {...textProps} style={[customTextStyles(), textStyle]}>
+        <CustomText center {...textProps} style={[customTextStyles(), textStyle]}>
           {title}
         </CustomText>
       )}

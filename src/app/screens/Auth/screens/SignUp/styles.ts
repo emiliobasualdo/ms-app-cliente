@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { brandLightBlue, white } from '@constants/colors';
+import { refRatioScale } from '@constants/platform';
 
 export default StyleSheet.create({
   container: {
@@ -30,5 +31,11 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: white
+  },
+  inputTextStyle: {
+    fontSize: 20
+  },
+  input: {
+    marginTop: refRatioScale(20)
   }
 });

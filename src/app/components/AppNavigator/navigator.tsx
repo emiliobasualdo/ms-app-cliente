@@ -16,7 +16,7 @@ import OnBoarding from '@screens/OnBoarding';
 import Home from '@screens/Home';
 
 const Stack = createStackNavigator();
-
+console.disableYellowBox = true;
 const AuthStack = () => (
   <>
     {inferRoute(Stack)({ [Routes.Welcome]: Welcome })}
