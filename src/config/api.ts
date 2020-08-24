@@ -8,7 +8,7 @@ import { Dispatch } from 'react';
 const snakeCaseSerializer = new SnakecaseSerializer();
 const camelCaseSerializer = new CamelcaseSerializer();
 
-const baseURL = Config.API_BASE_URL || 'http://wolox.com';
+const baseURL = Config.API_BASE_URL || '54.232.13.108:5000';
 
 const api = create({
   baseURL,
@@ -18,9 +18,6 @@ const api = create({
 api.addMonitor(((Reactotron as unknown) as { apisauce: any }).apisauce);
 
 export const apiSetup = (dispatch: Dispatch<any>) => {
-  if (baseURL === 'http://wolox.com') {
-    console.warn('API baseURL has not been properly initialized');
-  }
   api.addResponseTransform(response => {
     if (response.data) response.data = camelCaseSerializer.serialize(response.data);
   });
