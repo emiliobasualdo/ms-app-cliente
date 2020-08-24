@@ -52,12 +52,12 @@ export const authStackNavConfig = {
   initialRouteName: Routes.Welcome
 };
 
-const defaultDrawerNavOptions = {
+const defaultTabNavOptions = {
   // TODO: Change them to your need
 };
 
-export const drawerStackNavConfig = {
-  screenOptions: defaultDrawerNavOptions
+export const tabStackNavConfig = {
+  screenOptions: defaultTabNavOptions
 };
 
 // Default nav options for all screens
@@ -83,9 +83,7 @@ export const appScreensNavOptions = {
   [Routes.OnBoarding]: {
     headerShown: false
   },
-  [Routes.Home]: {
-    headerTitle: 'Home'
-  },
+  [Routes.Home]: noHeader,
   [Routes.SignUp]: {
     headerTitle: 'Crear cuenta',
     ...transparentHeader(brandDarkBlue),
@@ -112,6 +110,6 @@ export const statusBarStyles = {
   [Routes.SignUp]: statusBarConfig.transparentStatusBar,
   [Routes.SignUpSuccess]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Welcome]: statusBarConfig.transparentStatusBarWhite,
-  [Routes.Home]: statusBarConfig.blueStatusBar,
+  [Routes.Home]: statusBarConfig.transparentStatusBarWhite,
   default: statusBarConfig.transparentStatusBar
 };

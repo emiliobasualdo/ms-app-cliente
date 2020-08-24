@@ -30,5 +30,8 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: white
+  },
+  inputTextStyle: {
+    fontSize: 20
   }
 });

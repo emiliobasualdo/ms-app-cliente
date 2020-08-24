@@ -4,14 +4,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import CustomText from '@components/CustomText';
 import CustomButton from '@components/CustomButton';
 import imgSignUpSuccess from '@assets/imgSignUpSuccess.png';
+import Routes from '@constants/routes';
+import { Navigation } from '@interfaces/navigation';
+import { gradientColorArray } from '@constants/colors';
 
 import styles from './styles';
 
-function SignUpSuccess() {
-  // eslint-disable-next-line no-empty-function
-  const handleBeggin = () => {};
+function SignUpSuccess({ navigation }: Navigation) {
+  const handleBeggin = () => navigation.navigate(Routes.Home);
   return (
-    <LinearGradient colors={['#34A3E2', '#263996']} style={styles.container}>
+    <LinearGradient colors={gradientColorArray} style={styles.container}>
       <CustomText brandGray xbig>
         Ya creamos tu tarjeta virtual
       </CustomText>

@@ -56,6 +56,7 @@ function SignUp({ navigation }: Navigation) {
                   label={i18next.t('SIGNUP:DNI')}
                   name={FIELDS.name}
                   showError={hasSignUpError}
+                  inputTextStyles={styles.inputTextStyle}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
                 />
                 <CustomTextInputFormikField
@@ -64,6 +65,7 @@ function SignUp({ navigation }: Navigation) {
                   label={i18next.t('SIGNUP:BIRTH_DATE')}
                   name={FIELDS.surname}
                   showError={hasSignUpError}
+                  inputTextStyles={styles.inputTextStyle}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
                 />
                 {hasSignUpError && (

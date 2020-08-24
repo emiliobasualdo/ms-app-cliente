@@ -12,3 +12,6 @@ export const brandGray = '#B5BBC9';
 export const brandBlue = '#1498db';
 export const brandLightBlue = '#DFEEFB';
 export const brandDarkBlue = '#0D1F3C';
+export const brandDarkBlueAvatar = '#263996';
+
+export const gradientColorArray = ['#34A3E2', '#263996'];
