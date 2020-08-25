@@ -1,9 +1,12 @@
+import React from 'react';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { blue, brandDarkBlue, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 import { SIZES } from '@constants/fonts';
+import CustomBottomTab from '@components/CustomBottomTab/index';
 
 import fonts from './fonts';
 
@@ -52,12 +55,11 @@ export const authStackNavConfig = {
   initialRouteName: Routes.Welcome
 };
 
-const defaultTabNavOptions = {
-  // TODO: Change them to your need
-};
+const defaultTabNavOptions = {};
 
 export const tabStackNavConfig = {
-  screenOptions: defaultTabNavOptions
+  screenOptions: defaultTabNavOptions,
+  tabBar: (props: BottomTabBarProps) => <CustomBottomTab {...props} />
 };
 
 // Default nav options for all screens
@@ -113,3 +115,10 @@ export const statusBarStyles = {
   [Routes.Home]: statusBarConfig.transparentStatusBarWhite,
   default: statusBarConfig.transparentStatusBar
 };
+
+export interface TabProps {
+  focused: boolean;
+  routeName: string;
+  onPress: () => void;
+  index: number;
+}

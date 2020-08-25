@@ -8,7 +8,7 @@ import { Dispatch } from 'react';
 const snakeCaseSerializer = new SnakecaseSerializer();
 const camelCaseSerializer = new CamelcaseSerializer();
 
-const baseURL = Config.API_BASE_URL || '54.232.13.108:5000';
+const baseURL = 'https://wwxu0e1u2e.execute-api.us-east-1.amazonaws.com/dev';
 
 const api = create({
   baseURL,

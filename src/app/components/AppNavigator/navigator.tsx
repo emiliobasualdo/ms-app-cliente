@@ -41,7 +41,7 @@ function AppStack() {
 const Navigator = () => {
   const currentUser = useSelector((state: State) => state.auth.currentUser);
   const defaultStackConfig = currentUser ? appStackNavConfig : authStackNavConfig;
-  return <Stack.Navigator {...defaultStackConfig}>{currentUser ? AppStack() : AuthStack()}</Stack.Navigator>;
+  return <Stack.Navigator {...defaultStackConfig}>{true ? AppStack() : AuthStack()}</Stack.Navigator>;
 };
 
 export default Navigator;
