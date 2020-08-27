@@ -12,12 +12,12 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8
+    justifyContent: 'center'
   },
   icon: {
     height: iconSize,
-    width: iconSize
+    width: iconSize,
+    marginBottom: 5
   },
   borderless: borderlessStyle,
   radial: {

@@ -14,7 +14,7 @@ function Home() {
   // Uncomment to logout when API is ready
   const dispatch = useDispatch();
   // const handleLogout = useCallback(() => dispatch(AuthActions.logout()), [dispatch]);
-  const handleTest = () => dispatch(AuthActions.login({ phoneNumber: '+35196707859', code: '1111' }));
+  const handleTest = () => dispatch(AuthActions.login({ phoneNumber: '+351967078594', code: '1111' }));
   return (
     <LinearGradient colors={gradientColorArray} style={styles.container}>
       <HomeHeader />

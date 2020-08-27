@@ -1,5 +1,5 @@
 export interface CurrentUser {
-  sessionToken: string;
+  token: string;
 }
 
 export interface AuthData {
