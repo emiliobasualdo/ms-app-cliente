@@ -4,7 +4,8 @@ import { brandLightBlue, white } from '@constants/colors';
 export default StyleSheet.create({
   contentContainer: {
     justifyContent: 'center',
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: white
   },
   form: {
     flexDirection: 'row',
@@ -14,6 +15,7 @@ export default StyleSheet.create({
   },
   formContainer: {
     flex: 1,
+    minHeight: 600,
     alignItems: 'center',
     justifyContent: 'flex-end',
     backgroundColor: brandLightBlue
@@ -35,7 +37,6 @@ export default StyleSheet.create({
     paddingTop: 50,
     alignItems: 'center'
   },
-
   buttonText: {
     color: white
   },

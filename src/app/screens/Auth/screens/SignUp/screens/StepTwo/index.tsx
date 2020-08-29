@@ -12,7 +12,12 @@ import { useAsyncRequest } from '@hooks/useRequest';
 import { Navigation } from '@interfaces/navigation';
 import { FIELDS, SIGNUP_INITIAL_VALUES } from '@screens/Auth/constants';
 import * as AuthService from '@services/AuthService';
-import { validationsWrapper, validateRequired, validateOnlyText } from '@utils/validations/validateUtils';
+import {
+  validationsWrapper,
+  validateRequired,
+  validateAlphanumeric,
+  validateOnlyNumber
+} from '@utils/validations/validateUtils';
 import Routes from '@constants/routes';
 
 import '../../i18n';
@@ -47,9 +52,6 @@ function SignUp({ navigation }: Navigation) {
                 <CustomText medium brandGray>
                   {i18next.t('SIGNUP:TITLE_STEP_TWO')}
                 </CustomText>
-                {
-                  // TODO: Matt no te olvides de los validates y los fields
-                }
                 <CustomTextInputFormikField
                   animated
                   secondary
@@ -57,8 +59,11 @@ function SignUp({ navigation }: Navigation) {
                   name={FIELDS.name}
                   showError={hasSignUpError}
                   inputTextStyles={styles.inputTextStyle}
-                  validate={validationsWrapper([validateRequired, validateOnlyText])}
+                  validate={validationsWrapper([validateRequired, validateOnlyNumber])}
                 />
+                {
+                  // TODO: Matt no te olvides de agregar la validacion y el format de la fecha
+                }
                 <CustomTextInputFormikField
                   secondary
                   animated
@@ -66,7 +71,7 @@ function SignUp({ navigation }: Navigation) {
                   name={FIELDS.surname}
                   showError={hasSignUpError}
                   inputTextStyles={styles.inputTextStyle}
-                  validate={validationsWrapper([validateRequired, validateOnlyText])}
+                  validate={validationsWrapper([validateRequired, validateAlphanumeric])}
                 />
                 {hasSignUpError && (
                   <CustomText error center>

@@ -1,17 +1,20 @@
 import React from 'react';
 import { Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch } from 'react-redux';
 import CustomText from '@components/CustomText';
 import CustomButton from '@components/CustomButton';
 import imgSignUpSuccess from '@assets/imgSignUpSuccess.png';
-import Routes from '@constants/routes';
-import { Navigation } from '@interfaces/navigation';
 import { gradientColorArray } from '@constants/colors';
+import { actionCreators as AuthActions } from '@redux/auth/actions';
 
 import styles from './styles';
 
-function SignUpSuccess({ navigation }: Navigation) {
-  const handleBeggin = () => navigation.navigate(Routes.Home);
+function SignUpSuccess() {
+  const dispatch = useDispatch();
+
+  const handleBeggin = () => dispatch(AuthActions.login({ phoneNumber: '+351967078594', code: '1111' }));
+
   return (
     <LinearGradient colors={gradientColorArray} style={styles.container}>
       <CustomText brandGray xbig>

@@ -13,7 +13,12 @@ import { Navigation } from '@interfaces/navigation';
 import { State } from '@interfaces/reduxInterfaces';
 // import { actionCreators as AuthActions } from '@redux/auth/actions';
 import { FIELDS, LOGIN_INITIAL_VALUES } from '@screens/Auth/constants';
-import { validateRequired } from '@utils/validations/validateUtils';
+import {
+  validationsWrapper,
+  validateRequired,
+  validateOnlyNumber,
+  validateMinLength
+} from '@utils/validations/validateUtils';
 
 import './i18n';
 import styles from './styles';
@@ -25,17 +30,6 @@ function Login({ navigation }: Navigation) {
   //   dispatch
   // ]);
   const handleLogin = () => navigation.navigate(Routes.SignUp);
-  // navigation.navigate('Root', {
-  //   screen: 'Settings',
-  //   params: {
-  //     screen: 'Sound',
-  //     params: {
-  //       screen: 'Media',
-  //     },
-  //   },
-  // });
-
-  // const handleGoToSignUp = () => navigation.navigate(Routes.SignUp);
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={styles.contentContainer}
@@ -68,7 +62,11 @@ function Login({ navigation }: Navigation) {
                     name={FIELDS.password}
                     keyboardType="numeric"
                     showError={hasLoginError}
-                    validate={validateRequired}
+                    validate={validationsWrapper([
+                      validateRequired,
+                      validateOnlyNumber,
+                      validateMinLength(10)
+                    ])}
                     style={styles.phoneNumberInput}
                     caretHidden
                     inputTextStyles={styles.inputTextStyle}
