@@ -11,6 +11,18 @@ import { actionCreators as AuthActions } from '@redux/auth/actions';
 import styles from './styles';
 
 function SignUpSuccess() {
+  // const [, , error, signUp] = useAsyncRequest({
+  //   request: AuthService.signup,
+  //   withPostSuccess: () => navigation.navigate(Routes.StepTwo)
+  // });
+  // const hasSignUpError = !!error;
+  // const handleSignUp = useCallback(
+  //   values => {
+  //     Keyboard.dismiss();
+  //     signUp(values);
+  //   },
+  //   [signUp]
+  // );
   const dispatch = useDispatch();
 
   const handleBeggin = () => dispatch(AuthActions.login({ phoneNumber: '+351967078594', code: '1111' }));

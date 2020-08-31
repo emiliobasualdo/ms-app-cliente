@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
-import { useSelector } from 'react-redux';
 import i18next from 'i18next';
 import { Formik } from 'formik';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -10,8 +9,6 @@ import CustomText from '@components/CustomText';
 import { CustomTextInputFormikField } from '@components/CustomTextInput';
 import Routes from '@constants/routes';
 import { Navigation } from '@interfaces/navigation';
-import { State } from '@interfaces/reduxInterfaces';
-// import { actionCreators as AuthActions } from '@redux/auth/actions';
 import { FIELDS, LOGIN_INITIAL_VALUES } from '@screens/Auth/constants';
 import {
   validationsWrapper,
@@ -24,11 +21,7 @@ import './i18n';
 import styles from './styles';
 
 function Login({ navigation }: Navigation) {
-  // const dispatch = useDispatch();
-  const hasLoginError = useSelector<State, boolean>((state: State) => !!state.auth.currentUserError);
-  // const handleLogin: (values: any) => void = useCallback(values => dispatch(AuthActions.login(values)), [
-  //   dispatch
-  // ]);
+  // TODO: Cambiar handleLogin, agregar pegarle al endpoint y si da 200 redirigir al codeVerif sino a SignUp
   const handleLogin = () => navigation.navigate(Routes.SignUp);
   return (
     <KeyboardAwareScrollView
@@ -52,16 +45,14 @@ function Login({ navigation }: Navigation) {
                     keyboardType="numeric"
                     label={i18next.t('LOGIN:MAIL')}
                     name={FIELDS.prefix}
-                    showError={hasLoginError}
                     style={styles.prefixInput}
                     inputTextStyles={styles.inputTextStyle}
                   />
                   <CustomTextInputFormikField
                     maxLength={10}
                     label={i18next.t('LOGIN:PHONE_NUMBER')}
-                    name={FIELDS.password}
+                    name={FIELDS.phoneNumber}
                     keyboardType="numeric"
-                    showError={hasLoginError}
                     validate={validationsWrapper([
                       validateRequired,
                       validateOnlyNumber,
@@ -71,11 +62,6 @@ function Login({ navigation }: Navigation) {
                     caretHidden
                     inputTextStyles={styles.inputTextStyle}
                   />
-                  {hasLoginError && (
-                    <CustomText error center>
-                      {i18next.t('LOGIN:LOGIN_FAILURE')}
-                    </CustomText>
-                  )}
                 </View>
                 <CustomButton
                   onPress={handleLogin}
@@ -83,7 +69,6 @@ function Login({ navigation }: Navigation) {
                   semiBold
                   textStyle={styles.buttonText}
                   title={i18next.t('LOGIN:LOG_IN')}
-                  // disabled={hasLoginError || !isValid}
                 />
               </View>
             </View>

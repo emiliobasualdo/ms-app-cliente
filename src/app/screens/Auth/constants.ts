@@ -3,10 +3,8 @@ export const FIELDS = {
   name: 'name',
   surname: 'surname',
   birthDate: 'birthDate',
-  sex: 'sex',
-  email: 'email',
-  password: 'password',
-  phoneNumber: 'phoneNumber'
+  phoneNumber: 'phoneNumber',
+  dni: 'dni'
 };
 
 export const LOGIN_INITIAL_VALUES = {
@@ -14,12 +12,12 @@ export const LOGIN_INITIAL_VALUES = {
   [FIELDS.phoneNumber]: ''
 };
 
-export const SIGNUP_INITIAL_VALUES = {
+export const SIGNUP_INITIAL_VALUES_STEP_ONE = {
   [FIELDS.name]: '',
-  [FIELDS.surname]: '',
-  [FIELDS.birthDate]: '',
-  [FIELDS.sex]: '',
-  [FIELDS.email]: '',
-  [FIELDS.password]: '',
-  [FIELDS.phoneNumber]: ''
+  [FIELDS.surname]: ''
+};
+
+export const SIGNUP_INITIAL_VALUES_STEP_TWO = {
+  [FIELDS.dni]: '',
+  [FIELDS.birthDate]: ''
 };

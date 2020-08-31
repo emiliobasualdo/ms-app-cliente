@@ -1,37 +1,33 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Keyboard, TouchableWithoutFeedback, ScrollView, View } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import i18next from 'i18next';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
 import { CustomTextInputFormikField } from '@components/CustomTextInput';
 import { isIos } from '@constants/platform';
-import { useAsyncRequest } from '@hooks/useRequest';
+// import { useAsyncRequest } from '@hooks/useRequest';
 import { Navigation } from '@interfaces/navigation';
-import { FIELDS, SIGNUP_INITIAL_VALUES } from '@screens/Auth/constants';
-import * as AuthService from '@services/AuthService';
+import { FIELDS, SIGNUP_INITIAL_VALUES_STEP_ONE } from '@screens/Auth/constants';
 import { validationsWrapper, validateRequired, validateOnlyText } from '@utils/validations/validateUtils';
 import Routes from '@constants/routes';
+import { actionCreators as AuthActions } from '@redux/auth/actions';
 
 import './i18n';
 import styles from './styles';
 
 function SignUp({ navigation }: Navigation) {
-  const [, , error, signUp] = useAsyncRequest({
-    request: AuthService.signup,
-    withPostSuccess: () => navigation.navigate(Routes.StepTwo)
-  });
-  const hasSignUpError = !!error;
-  const handleSignUp = useCallback(
-    values => {
-      Keyboard.dismiss();
-      signUp(values);
-    },
-    [signUp]
-  );
+  const dispatch = useDispatch();
+  const handleFormSubmit = (values: any) => {
+    Keyboard.dismiss();
+    dispatch(AuthActions.setUserName(values.name));
+    dispatch(AuthActions.setUserSurname(values.surname));
+    navigation.navigate(Routes.StepTwo);
+  };
   return (
-    <Formik onSubmit={handleSignUp} initialValues={SIGNUP_INITIAL_VALUES}>
+    <Formik onSubmit={handleFormSubmit} initialValues={SIGNUP_INITIAL_VALUES_STEP_ONE}>
       {({ handleSubmit, isValid }) => (
         <>
           <ScrollView
@@ -52,7 +48,6 @@ function SignUp({ navigation }: Navigation) {
                   secondary
                   label={i18next.t('SIGNUP:NAME')}
                   name={FIELDS.name}
-                  showError={hasSignUpError}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
                 />
                 <CustomTextInputFormikField
@@ -62,57 +57,8 @@ function SignUp({ navigation }: Navigation) {
                   inputTextStyles={styles.inputTextStyle}
                   label={i18next.t('SIGNUP:SURNAME')}
                   name={FIELDS.surname}
-                  showError={hasSignUpError}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
                 />
-                {/* <CustomTextInputFormikField
-                  animated
-                  label={i18next.t('SIGNUP:BIRTH_DATE')}
-                  name={FIELDS.birthDate}
-                  placeholder={i18next.t('SIGNUP:BIRTH_DATE_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                  validate={validateRequired}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  label={i18next.t('SIGNUP:SEX')}
-                  name={FIELDS.sex}
-                  placeholder={i18next.t('SIGNUP:SEX_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                  validate={validationsWrapper([validateRequired, validateOnlyText])}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  keyboardType="email-address"
-                  label={i18next.t('SIGNUP:MAIL')}
-                  name={FIELDS.email}
-                  placeholder={i18next.t('SIGNUP:MAIL_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                  validate={validationsWrapper([validateRequired, validateEmail])}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  showEye
-                  secureTextEntry
-                  label={i18next.t('SIGNUP:PASSWORD')}
-                  name={FIELDS.password}
-                  showError={hasSignUpError}
-                  validate={validationsWrapper([validateRequired, validateMinLength(8)])}
-                />
-                <CustomTextInputFormikField
-                  animated
-                  isOptional
-                  keyboardType="phone-pad"
-                  label={i18next.t('SIGNUP:PHONE_NUMBER')}
-                  name={FIELDS.phoneNumber}
-                  placeholder={i18next.t('SIGNUP:PHONE_NUMBER_PLACEHOLDER')}
-                  showError={hasSignUpError}
-                /> */}
-                {hasSignUpError && (
-                  <CustomText error center>
-                    {i18next.t('SIGNUP:SIGNUP_FAILURE')}
-                  </CustomText>
-                )}
                 <CustomButton
                   primary
                   semiBold
@@ -120,7 +66,7 @@ function SignUp({ navigation }: Navigation) {
                   onPress={handleSubmit}
                   style={styles.formButton}
                   title={i18next.t('SIGNUP:SIGN_UP')}
-                  disabled={hasSignUpError || !isValid}
+                  disabled={!isValid}
                 />
               </View>
             </TouchableWithoutFeedback>

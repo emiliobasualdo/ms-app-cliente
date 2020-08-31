@@ -4,13 +4,22 @@ import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
 import * as AuthService from '@services/AuthService';
 import { CurrentUser, AuthData } from '@interfaces/authInterfaces';
 import { Action } from '@interfaces/reduxInterfaces';
-import { setOnBoardingAccess } from '@services/OnBoardingService';
 
-export const actions = createTypes(completeTypes(['LOGIN', 'LOGOUT'], ['AUTH_INIT', 'HAS_ACCESS']), '@@AUTH');
+export const actions = createTypes(
+  completeTypes(
+    ['LOGIN', 'LOGOUT'],
+    ['AUTH_INIT', 'HAS_ACCESS', 'SET_USER_NAME', 'SET_USER_SURNAME', 'SET_USER_DNI', 'SET_USER_DATE_OF_BIRTH']
+  ),
+  '@@AUTH'
+);
 
 const TARGETS = {
   ONBOARDING: 'hasAccessOnBoarding',
-  CURRENT_USER: 'currentUser'
+  CURRENT_USER: 'currentUser',
+  USER_NAME: 'userName',
+  USER_SURNAME: 'userSurname',
+  USER_DNI: 'userDNI',
+  USER_DATE_OF_BIRTH: 'userDateOfBirth'
 };
 
 export const actionCreators = {
@@ -39,18 +48,29 @@ export const actionCreators = {
     target: TARGETS.CURRENT_USER,
     service: AuthService.logout,
     injections: [
-      withPostSuccess(async (dispatch: Dispatch<any>) => {
+      withPostSuccess(async () => {
         await AuthService.removeCurrentUser();
-        dispatch(actionCreators.setHasAccessOnBoarding(false));
       })
     ]
   }),
-  setHasAccessOnBoarding: (value: boolean) => async (dispatch: Dispatch<any>) => {
-    await setOnBoardingAccess(value);
-    dispatch({
-      type: actions.HAS_ACCESS,
-      target: TARGETS.ONBOARDING,
-      payload: value
-    });
-  }
+  setUserName: (name: string) => ({
+    type: actions.SET_USER_NAME,
+    target: TARGETS.USER_NAME,
+    payload: name
+  }),
+  setUserSurname: (surname: string) => ({
+    type: actions.SET_USER_SURNAME,
+    target: TARGETS.USER_SURNAME,
+    payload: surname
+  }),
+  setUserDateOfBrith: (date: string) => ({
+    type: actions.SET_USER_DATE_OF_BIRTH,
+    target: TARGETS.USER_DATE_OF_BIRTH,
+    payload: date
+  }),
+  setUserDNI: (DNI: string) => ({
+    type: actions.SET_USER_DNI,
+    target: TARGETS.USER_DNI,
+    payload: DNI
+  })
 };
