@@ -1,73 +1,81 @@
-import React, { useCallback } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
 import i18next from 'i18next';
 import { Formik } from 'formik';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
 import { CustomTextInputFormikField } from '@components/CustomTextInput';
 import Routes from '@constants/routes';
 import { Navigation } from '@interfaces/navigation';
-import { State } from '@interfaces/reduxInterfaces';
-import { actionCreators as AuthActions } from '@redux/auth/actions';
 import { FIELDS, LOGIN_INITIAL_VALUES } from '@screens/Auth/constants';
-import { validationsWrapper, validateRequired, validateEmail } from '@utils/validations/validateUtils';
+import {
+  validationsWrapper,
+  validateRequired,
+  validateOnlyNumber,
+  validateMinLength
+} from '@utils/validations/validateUtils';
 
 import './i18n';
 import styles from './styles';
 
 function Login({ navigation }: Navigation) {
-  const dispatch = useDispatch();
-  const hasLoginError = useSelector<State, boolean>((state: State) => !!state.auth.currentUserError);
-  const handleLogin: (values: any) => void = useCallback(values => dispatch(AuthActions.login(values)), [
-    dispatch
-  ]);
-  const handleGoToSignUp = () => navigation.navigate(Routes.SignUp);
+  // TODO: Cambiar handleLogin, agregar pegarle al endpoint y si da 200 redirigir al codeVerif sino a SignUp
+  const handleLogin = () => navigation.navigate(Routes.SignUp);
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
-      <Formik onSubmit={handleLogin} initialValues={LOGIN_INITIAL_VALUES}>
-        {({ handleSubmit, isValid }) => (
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <View style={styles.form}>
-              <CustomTextInputFormikField
-                animated
-                keyboardType="email-address"
-                label={i18next.t('LOGIN:MAIL')}
-                name={FIELDS.email}
-                placeholder={i18next.t('LOGIN:MAIL_PLACEHOLDER')}
-                showError={hasLoginError}
-                validate={validationsWrapper([validateRequired, validateEmail])}
-              />
-              <CustomTextInputFormikField
-                animated
-                showEye
-                secureTextEntry
-                label={i18next.t('LOGIN:PASSWORD')}
-                name={FIELDS.password}
-                showError={hasLoginError}
-                validate={validateRequired}
-              />
-              {hasLoginError && (
-                <CustomText error center>
-                  {i18next.t('LOGIN:LOGIN_FAILURE')}
+    <KeyboardAwareScrollView
+      contentContainerStyle={styles.contentContainer}
+      enableOnAndroid
+      bounces={false}
+      extraScrollHeight={60}
+      keyboardShouldPersistTaps="always">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Formik onSubmit={handleLogin} initialValues={LOGIN_INITIAL_VALUES}>
+          {({ handleSubmit, isValid }) => (
+            <View style={styles.formContainer}>
+              <View style={styles.mainContainer}>
+                <CustomText brandGray semiBold>
+                  Te enviaremos un código de verificación a este número
                 </CustomText>
-              )}
+                <View style={styles.form}>
+                  <CustomTextInputFormikField
+                    center
+                    disabled
+                    keyboardType="numeric"
+                    label={i18next.t('LOGIN:MAIL')}
+                    name={FIELDS.prefix}
+                    style={styles.prefixInput}
+                    inputTextStyles={styles.inputTextStyle}
+                  />
+                  <CustomTextInputFormikField
+                    maxLength={10}
+                    label={i18next.t('LOGIN:PHONE_NUMBER')}
+                    name={FIELDS.phoneNumber}
+                    keyboardType="numeric"
+                    validate={validationsWrapper([
+                      validateRequired,
+                      validateOnlyNumber,
+                      validateMinLength(10)
+                    ])}
+                    style={styles.phoneNumberInput}
+                    caretHidden
+                    inputTextStyles={styles.inputTextStyle}
+                  />
+                </View>
+                <CustomButton
+                  onPress={handleLogin}
+                  primary
+                  semiBold
+                  textStyle={styles.buttonText}
+                  title={i18next.t('LOGIN:LOG_IN')}
+                />
+              </View>
             </View>
-            <CustomButton
-              onPress={handleSubmit}
-              style={styles.formButton}
-              title={i18next.t('LOGIN:LOG_IN')}
-              disabled={hasLoginError || !isValid}
-            />
-            <CustomButton
-              onPress={handleGoToSignUp}
-              style={styles.formButton}
-              title={i18next.t('LOGIN:SIGN_UP')}
-            />
-          </View>
-        )}
-      </Formik>
-    </TouchableWithoutFeedback>
+          )}
+        </Formik>
+      </TouchableWithoutFeedback>
+    </KeyboardAwareScrollView>
   );
 }
 

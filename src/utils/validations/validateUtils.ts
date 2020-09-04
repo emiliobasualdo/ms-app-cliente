@@ -7,6 +7,7 @@ const emailRegex = /^(([^<>()·=~ºªÇ¨?¿*^|#¢∞¬÷"$%"≠´}{![\]\\.,;:\s
 const alphanumericRegex = /^[a-zA-Z0-9]*$/g;
 const onlyTextRegex = /^[a-zA-Z\s]*$/;
 const onlyNumberRegex = /^[0-9]*$/g;
+export const minDniRegex = /^(?!0{2})/;
 
 // Validations Wrapper. For example: validate={validationsWrapper([validateRequired, validateEmail])}
 export const validationsWrapper = (validations: Array<(value: string) => string | undefined>) => (
@@ -48,3 +49,12 @@ export const validateEqualLength = (equalValue: number) => (value: string) =>
   value && value.length === equalValue
     ? undefined
     : i18next.t('VALIDATIONS:EQUAL_LENGTH', { count: equalValue });
+
+// DNI
+
+// export const DNI_MIN_LENGTH = 7;
+// export const DNI_MAX_LENGTH = 8;
+// export const dniValidation = string()
+//   .matches(numberRegex, invalidFormat)
+//   .min(DNI_MIN_LENGTH, invalidFormat)
+//   .matches(minDniRegex, invalidFormat);

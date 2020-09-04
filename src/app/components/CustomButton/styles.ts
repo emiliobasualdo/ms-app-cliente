@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { transparent, black, green, gray, white } from '@constants/colors';
+import { transparent, black, green, gray, white, brandBlue } from '@constants/colors';
 
 const iconSize = 20;
 
@@ -12,12 +12,12 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8
+    justifyContent: 'center'
   },
   icon: {
     height: iconSize,
-    width: iconSize
+    width: iconSize,
+    marginBottom: 5
   },
   borderless: borderlessStyle,
   radial: {
@@ -49,5 +49,31 @@ export default StyleSheet.create({
   },
   greenContent: {
     color: white
+  },
+  primary: {
+    color: white,
+    backgroundColor: brandBlue,
+    alignSelf: 'center',
+    width: '45%',
+    height: 45,
+    borderRadius: 20
+  },
+  secondary: {
+    borderWidth: 1,
+    borderColor: brandBlue,
+    backgroundColor: white,
+    color: brandBlue,
+    alignSelf: 'center',
+    width: '45%',
+    height: 45,
+    borderRadius: 20
+  },
+  tertiary: {
+    color: brandBlue,
+    backgroundColor: white,
+    alignSelf: 'center',
+    width: '45%',
+    height: 45,
+    borderRadius: 20
   }
 });

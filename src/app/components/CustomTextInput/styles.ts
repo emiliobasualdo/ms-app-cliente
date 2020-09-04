@@ -17,12 +17,18 @@ export default StyleSheet.create({
     paddingHorizontal: 5
   },
   inputContainer: {
-    alignItems: 'center',
-    borderBottomWidth: 1,
+    paddingHorizontal: 8,
+    borderWidth: 1,
+    borderRadius: 8,
     borderColor: darkGray,
+    height: 60,
     flexDirection: 'row',
-    height: 25,
+    alignItems: 'center',
     justifyContent: 'space-between'
+  },
+  secondaryInputContainer: {
+    borderWidth: 0,
+    borderBottomWidth: 1
   },
   bottomBorderBlue: {
     borderColor: blue
@@ -44,7 +50,10 @@ export default StyleSheet.create({
     flex: 1
   },
   errorContainer: {
-    height: 15,
+    height: 20,
     marginTop: 3
+  },
+  secondary: {
+    height: 800
   }
 });

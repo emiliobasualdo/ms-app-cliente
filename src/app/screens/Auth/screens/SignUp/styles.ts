@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native';
-import { green } from '@constants/colors';
+import { brandLightBlue, white } from '@constants/colors';
+import { refRatioScale } from '@constants/platform';
 
 export default StyleSheet.create({
   container: {
     width: '100%',
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: brandLightBlue
   },
   stretchAndFlex: {
     alignSelf: 'stretch'
@@ -15,9 +17,25 @@ export default StyleSheet.create({
     paddingBottom: 20
   },
   formButton: {
-    backgroundColor: green,
-    padding: 10,
-    borderRadius: 3,
-    marginTop: 15
+    marginTop: 20
+  },
+  inputsContainer: {
+    marginTop: 140,
+    paddingHorizontal: 30,
+    paddingTop: 70,
+    backgroundColor: white,
+    flex: 1,
+    width: '100%',
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20
+  },
+  buttonText: {
+    color: white
+  },
+  inputTextStyle: {
+    fontSize: 20
+  },
+  input: {
+    marginTop: refRatioScale(20)
   }
 });

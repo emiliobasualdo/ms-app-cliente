@@ -5,6 +5,7 @@ import { CurrentUser, AuthData, SignUpData } from '@interfaces/authInterfaces';
 import { getOnBoardingAccess } from '@services/OnBoardingService';
 
 const CURRENT_USER_KEY = '@Auth:currentUser';
+const AUTH_EP = '/auth';
 
 // TODO: Adapt returned object to:
 //   sessionToken: usually currentUser.access_token
@@ -12,7 +13,7 @@ const CURRENT_USER_KEY = '@Auth:currentUser';
 const formatUser = (currentUser: CurrentUser) => currentUser;
 
 export const setCurrentUser = (currentUser: CurrentUser) => {
-  api.setHeader('Authorization', `Bearer ${currentUser.sessionToken}`);
+  api.setHeader('Authorization', `Bearer ${currentUser.token}`);
   return AsyncStorage.setItem(CURRENT_USER_KEY, JSON.stringify(formatUser(currentUser)));
 };
 export const getCurrentUser = () =>
@@ -22,26 +23,13 @@ export const removeCurrentUser = () => AsyncStorage.removeItem(CURRENT_USER_KEY)
 export const authSetup = async () => {
   const currentUser = await getCurrentUser();
   if (currentUser) {
-    api.setHeader('Authorization', `Bearer ${currentUser.sessionToken}`);
+    api.setHeader('Authorization', `Bearer ${currentUser.token}`);
   }
   const hasAccess = await getOnBoardingAccess();
   return { currentUser, hasAccess };
 };
-export const login = (_: AuthData) => {
-  // TODO: Implement call to authentication API here
-  // TODO: If you want to test the error
-  // return Promise.resolve({
-  //   ok: false,
-  //   problem: 'CLIENT_ERROR',
-  //   originalError: {}
-  // });
-  return Promise.resolve({
-    ok: true,
-    problem: null,
-    originalError: null,
-    data: { sessionToken: 'token' }
-  });
-};
+
+export const login = ({ code, phoneNumber }: AuthData) => api.post(`${AUTH_EP}/login`, { phoneNumber, code });
 
 export const logout = () => {
   // TODO: Implement call to authentication API here

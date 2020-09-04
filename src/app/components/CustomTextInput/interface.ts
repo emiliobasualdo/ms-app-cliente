@@ -24,4 +24,5 @@ export interface CustomTextInputProps extends TextInputProps, TextProps {
   showEye?: boolean;
   style?: ViewProps['style'];
   value?: string;
+  secondary?: boolean;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import Swiper from 'react-native-swiper';
 
 import Footer from './components/Footer';
@@ -23,7 +23,7 @@ function CustomStepSwipper({ onSkip }: Props) {
     setScrollIndex(scrollIndex - 1);
   }, [scrollIndex]);
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Swiper
         activeDotStyle={styles.activeDot}
         dotStyle={styles.dot}
@@ -39,7 +39,7 @@ function CustomStepSwipper({ onSkip }: Props) {
         onPreviousScreen={handlePreviousScreen}
         screenIndex={scrollIndex}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

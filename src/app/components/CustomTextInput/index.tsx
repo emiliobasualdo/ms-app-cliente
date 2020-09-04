@@ -31,6 +31,7 @@ const CustomTextInput = ({
   showEye,
   style,
   value,
+  secondary,
   ...props
 }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,20 +44,11 @@ const CustomTextInput = ({
   };
   return (
     <View style={[styles.container, animated && !!label && styles.withAnimatedLabel, style]}>
-      {label && (
-        <InputLabel
-          animated={animated}
-          hasValue={!!value}
-          isFocused={isFocused}
-          isOptional={isOptional}
-          label={label}
-          labelStyle={labelStyle}
-        />
-      )}
       <View
         style={[
           multiline ? styles.multilineContainer : styles.inputContainer,
           borderColorStyle(),
+          secondary && styles.secondaryInputContainer,
           inputContainerStyle
         ]}>
         <TextInput
@@ -76,6 +68,16 @@ const CustomTextInput = ({
           <ShowPassword onShowPassword={handleShowPassword} passwordVisible={showPassword} />
         )}
       </View>
+      {label && (
+        <InputLabel
+          animated={animated}
+          hasValue={!!value}
+          isFocused={isFocused}
+          isOptional={isOptional}
+          label={label}
+          labelStyle={labelStyle}
+        />
+      )}
       <View style={[!disabled && styles.errorContainer, errorContainerStyle]}>
         {!isFocused && error && (
           <CustomText error xsmall style={errorStyle}>

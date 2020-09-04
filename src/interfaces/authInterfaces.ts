@@ -1,10 +1,10 @@
 export interface CurrentUser {
-  sessionToken: string;
+  token: string;
 }
 
 export interface AuthData {
-  email: string;
-  password: string;
+  phoneNumber: string;
+  code: string;
 }
 
 export interface SignUpData {

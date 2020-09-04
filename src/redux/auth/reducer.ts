@@ -9,7 +9,11 @@ import { actions } from './actions';
 const stateDescription = {
   currentUser: null,
   hasAccessOnBoarding: false,
-  initialLoading: true
+  initialLoading: true,
+  userName: null,
+  userSurname: null,
+  userDNI: null,
+  userDateOfBirth: null
 };
 
 export const initialState = completeState(stateDescription, ['initialLoading', 'hasAccessOnBoarding']);
@@ -17,6 +21,10 @@ export const initialState = completeState(stateDescription, ['initialLoading', '
 const reducerDescription = {
   primaryActions: [actions.LOGIN, actions.LOGOUT],
   override: {
+    [actions.SET_USER_DNI]: onReadValue(),
+    [actions.SET_USER_NAME]: onReadValue(),
+    [actions.SET_USER_SURNAME]: onReadValue(),
+    [actions.SET_USER_DATE_OF_BIRTH]: onReadValue(),
     [actions.HAS_ACCESS]: onReadValue(),
     [actions.AUTH_INIT]: (state: ImmutableObject<AuthState>, action: Action<Nullable<CurrentUser>>) =>
       state.merge({
