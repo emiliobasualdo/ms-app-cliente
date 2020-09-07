@@ -46,11 +46,9 @@ function StepTwo({ navigation }: Navigation) {
                   label={i18next.t('SIGNUP:DNI')}
                   name={FIELDS.dni}
                   inputTextStyles={styles.inputTextStyle}
-                  validate={validationsWrapper([validateRequired, validateOnlyNumber])}
+                  validate={validationsWrapper([validateRequired])}
                 />
-                {
-                  // TODO: Matt no te olvides de agregar la validacion y el format de la fecha
-                }
+                {/* TODO: Agregar validaciones y formatting.*/}
                 <CustomTextInputFormikField
                   secondary
                   animated
