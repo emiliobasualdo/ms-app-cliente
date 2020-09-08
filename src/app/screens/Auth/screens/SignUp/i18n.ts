@@ -16,5 +16,7 @@ i18next.addResources('es', 'SIGNUP', {
   PHONE_NUMBER: 'Número de teléfono',
   PHONE_NUMBER_PLACEHOLDER: 'Número sin 0 ni 15. Ej: 1134454325',
   SIGN_UP: 'Siguiente',
-  SIGNUP_FAILURE: 'Ocurrió un error. Por favor inténtenlo nuevamente!'
+  SIGNUP_FAILURE: 'Ocurrió un error. Por favor inténtenlo nuevamente!',
+  WALLET_CREATED: 'Ya creamos tu tarjeta virtual',
+  MY_WALLET: 'Mi billetera'
 });

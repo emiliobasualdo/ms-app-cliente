@@ -9,7 +9,7 @@ import App from './src/app';
 export default function index() {
   return (
     <Provider store={store}>
-        <App />
+      <App />
     </Provider>
   );
 }
