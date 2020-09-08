@@ -7,6 +7,7 @@ import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 import { SIZES } from '@constants/fonts';
 import CustomBottomTab from '@components/CustomBottomTab/index';
+import { IS_SMALL_DEVICE } from '@constants/platform';
 
 import fonts from './fonts';
 
@@ -66,7 +67,7 @@ const authCommonOptions = (title = 'Código de verificación') => ({
   headerTitle: title,
   ...transparentHeader(brandDarkBlue),
   headerTitleStyle: {
-    fontSize: SIZES.BIG,
+    fontSize: IS_SMALL_DEVICE ? SIZES.BIG : SIZES.XBIG,
     fontWeight: '600'
   }
 });
@@ -78,18 +79,11 @@ export const appScreensNavOptions = {
   [Routes.Login]: authCommonOptions(),
   [Routes.VerificationCode]: authCommonOptions(),
   [Routes.SignUp]: authCommonOptions('Crear cuenta'),
+  [Routes.StepTwo]: authCommonOptions('Crear cuenta'),
   [Routes.OnBoarding]: {
     headerShown: false
   },
   [Routes.Home]: noHeader,
-  [Routes.StepTwo]: {
-    headerTitle: 'Crear cuenta',
-    ...transparentHeader(brandDarkBlue),
-    headerTitleStyle: {
-      fontSize: SIZES.BIG,
-      fontWeight: '600'
-    }
-  },
   [Routes.SignUpSuccess]: noHeader,
   [Routes.Welcome]: noHeader
 };
