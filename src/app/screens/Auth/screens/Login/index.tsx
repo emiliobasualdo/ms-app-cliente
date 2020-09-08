@@ -47,6 +47,7 @@ function Login({ navigation }: Navigation) {
                     name={FIELDS.prefix}
                     style={styles.prefixInput}
                     inputTextStyles={styles.inputTextStyle}
+                    returnKeyType="next"
                   />
                   <CustomTextInputFormikField
                     maxLength={10}
@@ -61,6 +62,7 @@ function Login({ navigation }: Navigation) {
                     style={styles.phoneNumberInput}
                     caretHidden
                     inputTextStyles={styles.inputTextStyle}
+                    returnKeyType="go"
                   />
                 </View>
                 <CustomButton

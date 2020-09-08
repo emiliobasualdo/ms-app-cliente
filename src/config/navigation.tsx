@@ -7,6 +7,7 @@ import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 import { SIZES } from '@constants/fonts';
 import CustomBottomTab from '@components/CustomBottomTab/index';
+import { IS_SMALL_DEVICE } from '@constants/platform';
 
 import fonts from './fonts';
 
@@ -62,46 +63,27 @@ export const tabStackNavConfig = {
   tabBar: (props: BottomTabBarProps) => <CustomBottomTab {...props} />
 };
 
+const authCommonOptions = (title = 'Código de verificación') => ({
+  headerTitle: title,
+  ...transparentHeader(brandDarkBlue),
+  headerTitleStyle: {
+    fontSize: IS_SMALL_DEVICE ? SIZES.BIG : SIZES.XBIG,
+    fontWeight: '600'
+  }
+});
+
 // Default nav options for all screens
 export const appScreensNavOptions = {
   // TODO: Add here the screens nav options that changes with respect to
   // the default ones defined in defaultNavOptions, for example...
-  [Routes.Login]: {
-    headerTitle: 'Código de verificación',
-    ...transparentHeader(brandDarkBlue),
-    headerTitleStyle: {
-      fontSize: SIZES.BIG,
-      fontWeight: '600'
-    }
-  },
-  [Routes.VerificationCode]: {
-    headerTitle: 'Código de verificación',
-    ...transparentHeader(brandDarkBlue),
-    headerTitleStyle: {
-      fontSize: SIZES.BIG,
-      fontWeight: '600'
-    }
-  },
+  [Routes.Login]: authCommonOptions(),
+  [Routes.VerificationCode]: authCommonOptions(),
+  [Routes.SignUp]: authCommonOptions('Crear cuenta'),
+  [Routes.StepTwo]: authCommonOptions('Crear cuenta'),
   [Routes.OnBoarding]: {
     headerShown: false
   },
   [Routes.Home]: noHeader,
-  [Routes.SignUp]: {
-    headerTitle: 'Crear cuenta',
-    ...transparentHeader(brandDarkBlue),
-    headerTitleStyle: {
-      fontSize: SIZES.BIG,
-      fontWeight: '600'
-    }
-  },
-  [Routes.StepTwo]: {
-    headerTitle: 'Crear cuenta',
-    ...transparentHeader(brandDarkBlue),
-    headerTitleStyle: {
-      fontSize: SIZES.BIG,
-      fontWeight: '600'
-    }
-  },
   [Routes.SignUpSuccess]: noHeader,
   [Routes.Welcome]: noHeader
 };

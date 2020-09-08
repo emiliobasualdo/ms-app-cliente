@@ -20,7 +20,6 @@ interface Types {
   styles: StringObject;
 }
 
-// Here you can replace MONTSERRAT with your custom font.
 // Also, you can add or remove some weights or styles that don't apply with your custom font.
 const fonts: Record<string, Types> = {
   [TITILLIUM_WEB]: {
