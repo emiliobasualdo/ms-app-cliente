@@ -10,7 +10,7 @@ import { CustomTextInputFormikField } from '@components/CustomTextInput';
 import { isIos } from '@constants/platform';
 import { Navigation } from '@interfaces/navigation';
 import { FIELDS, SIGNUP_INITIAL_VALUES_STEP_TWO } from '@screens/Auth/constants';
-import { validationsWrapper, validateRequired, validateOnlyNumber } from '@utils/validations/validateUtils';
+import { validationsWrapper, validateRequired } from '@utils/validations/validateUtils';
 import Routes from '@constants/routes';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
 
@@ -47,6 +47,7 @@ function StepTwo({ navigation }: Navigation) {
                   name={FIELDS.dni}
                   inputTextStyles={styles.inputTextStyle}
                   validate={validationsWrapper([validateRequired])}
+                  returnKeyType="next"
                 />
                 {/* TODO: Agregar validaciones y formatting.*/}
                 <CustomTextInputFormikField
@@ -56,6 +57,7 @@ function StepTwo({ navigation }: Navigation) {
                   name={FIELDS.birthDate}
                   inputTextStyles={styles.inputTextStyle}
                   validate={validationsWrapper([validateRequired])}
+                  returnKeyType="go"
                 />
                 <CustomButton
                   primary

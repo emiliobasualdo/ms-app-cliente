@@ -49,6 +49,7 @@ function SignUp({ navigation }: Navigation) {
                   label={i18next.t('SIGNUP:NAME')}
                   name={FIELDS.name}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
+                  returnKeyType="next"
                 />
                 <CustomTextInputFormikField
                   secondary
@@ -58,6 +59,7 @@ function SignUp({ navigation }: Navigation) {
                   label={i18next.t('SIGNUP:SURNAME')}
                   name={FIELDS.surname}
                   validate={validationsWrapper([validateRequired, validateOnlyText])}
+                  returnKeyType="go"
                 />
                 <CustomButton
                   primary
