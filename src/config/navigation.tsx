@@ -2,7 +2,7 @@ import React from 'react';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { blue, brandDarkBlue, white } from '@constants/colors';
+import { black, blue, brandDarkBlue, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 import { SIZES } from '@constants/fonts';
@@ -29,7 +29,7 @@ const defaultNavOptions = ({ route }: Navigation) => ({
   headerTintColor: white
 });
 
-const transparentHeader = (fontColor: string) => ({
+const transparentHeader = (fontColor?: string) => ({
   headerStyle: {
     backgroundColor: 'transparent',
     borderBottomWidth: 0
@@ -80,6 +80,7 @@ export const appScreensNavOptions = {
   [Routes.VerificationCode]: authCommonOptions(),
   [Routes.SignUp]: authCommonOptions('Crear cuenta'),
   [Routes.StepTwo]: authCommonOptions('Crear cuenta'),
+  [Routes.QrCodeScanner]: { ...transparentHeader(black), headerTitle: 'Pagá con código QR' },
   [Routes.OnBoarding]: {
     headerShown: false
   },
@@ -95,6 +96,7 @@ export const statusBarStyles = {
   [Routes.SignUpSuccess]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Welcome]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Home]: statusBarConfig.transparentStatusBarWhite,
+  [Routes.QrCodeScanner]: statusBarConfig.transparentStatusBarWhite,
   default: statusBarConfig.transparentStatusBar
 };
 

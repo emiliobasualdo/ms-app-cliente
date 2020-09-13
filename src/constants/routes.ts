@@ -10,7 +10,8 @@ const Routes: StringObject = {
   VerificationCode: 'VerificationCode',
   StepTwo: 'StepTwo',
   SignUpSuccess: 'SignUpSuccess',
-  Welcome: 'Welcome'
+  Welcome: 'Welcome',
+  QrCodeScanner: 'QrCodeScanner'
 };
 
 export default Routes;
