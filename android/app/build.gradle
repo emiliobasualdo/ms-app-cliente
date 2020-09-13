@@ -142,6 +142,7 @@ android {
 
     defaultConfig {
         applicationId "com.massimpleappclient"
+        missingDimensionStrategy 'react-native-camera', 'general'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode generateVersionCode()

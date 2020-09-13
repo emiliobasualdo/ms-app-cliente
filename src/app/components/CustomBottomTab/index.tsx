@@ -19,6 +19,8 @@ function CustomBottomTab({ navigation }: BottomTabBarProps) {
   // inactiveTintColor
 
   const handleHome = () => navigation.navigate(Routes.Home);
+  const handleQr = () => navigation.navigate(Routes.QrCodeScanner);
+
   return (
     <SafeAreaView style={styles.container}>
       <CustomButton
@@ -29,14 +31,13 @@ function CustomBottomTab({ navigation }: BottomTabBarProps) {
         iconStyle={styles.icon}
       />
       <View style={styles.qrContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleQr}>
           <View style={styles.circle}>
             <Image style={styles.icon} source={icQrCode} />
           </View>
         </TouchableOpacity>
         <CustomText>Pagar</CustomText>
       </View>
-      {/* <CustomButton style={styles.button} title="Pagar" icon={icQrCode} onPress={handleHome} /> */}
       <CustomButton
         title="Perfil"
         icon={icPerfil}

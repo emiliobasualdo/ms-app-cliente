@@ -14,6 +14,7 @@ import SignUpSuccess from '@screens/Auth/screens/SignUp/screens/SignUpSuccess';
 import Welcome from '@screens/Auth/screens/Login/screens/Welcome';
 import OnBoarding from '@screens/OnBoarding';
 import Home from '@screens/Home';
+import QrCodeScanner from '@screens/QrCodeScanner';
 
 const Stack = createStackNavigator();
 // console.disableYellowBox = true;
@@ -35,7 +36,12 @@ function TabNavigator() {
 }
 
 function AppStack() {
-  return <>{inferRoute(Stack)({ [Routes.Home]: TabNavigator })}</>;
+  return (
+    <>
+      {inferRoute(Stack)({ [Routes.Home]: TabNavigator })}
+      {inferRoute(Stack)({ [Routes.QrCodeScanner]: QrCodeScanner })}
+    </>
+  );
 }
 
 const Navigator = () => {
