@@ -8,6 +8,9 @@ import { Navigation } from '@interfaces/navigation';
 import { SIZES } from '@constants/fonts';
 import CustomBottomTab from '@components/CustomBottomTab/index';
 import { IS_SMALL_DEVICE } from '@constants/platform';
+import CustomHeader from '@components/CustomHeader';
+import icBack from '@app/assets/icBack.png';
+import { Image, View } from 'react-native';
 
 import fonts from './fonts';
 
@@ -26,6 +29,7 @@ const defaultNavOptions = ({ route }: Navigation) => ({
     ...fonts.baseFont,
     color: white
   },
+  headerBackImage: () => <Image source={icBack} style={{ width: 30, height: 30 }} />,
   headerTintColor: white
 });
 
@@ -85,8 +89,23 @@ export const appScreensNavOptions = {
     headerShown: false
   },
   [Routes.Home]: noHeader,
+  [Routes.TransactionDetail]: ({ navigation }: any) => ({
+    ...transparentHeader(brandDarkBlue),
+    headerStyle: {
+      backgroundColor: white,
+      borderBottomWidth: 0,
+      borderBottomColor: white,
+      elevation: 0,
+      shadowColor: white
+    },
+    headerBackImage: () => <Image source={icBack} style={{ width: 30, height: 30 }} />,
+    headerRight: () => <View style={{ width: 30, height: 30 }} />,
+    headerTransparent: false,
+    headerTitle: (props: any) => <CustomHeader navigation={navigation} title={'Movimiento'} {...props} />
+  }),
   [Routes.SignUpSuccess]: noHeader,
-  [Routes.Welcome]: noHeader
+  [Routes.Welcome]: noHeader,
+  [Routes.StackHome]: noHeader
 };
 
 export const statusBarStyles = {
@@ -95,8 +114,9 @@ export const statusBarStyles = {
   [Routes.SignUp]: statusBarConfig.transparentStatusBar,
   [Routes.SignUpSuccess]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Welcome]: statusBarConfig.transparentStatusBarWhite,
-  [Routes.Home]: statusBarConfig.transparentStatusBarWhite,
   [Routes.QrCodeScanner]: statusBarConfig.transparentStatusBarWhite,
+  [Routes.Home]: statusBarConfig.whiteStatusBar,
+  [Routes.TransactionDetail]: statusBarConfig.whiteStatusBar,
   default: statusBarConfig.transparentStatusBar
 };
 

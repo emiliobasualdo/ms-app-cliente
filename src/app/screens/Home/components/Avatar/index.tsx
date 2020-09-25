@@ -13,7 +13,7 @@ interface Props {
 function Avatar({ name, style }: Props) {
   return (
     <View style={[styles.container, style]}>
-      <CustomText style={styles.textStyles}>{getInitials(name)}</CustomText>
+      <CustomText xsmall style={styles.textStyles}>{getInitials(name)}</CustomText>
     </View>
   );
 }

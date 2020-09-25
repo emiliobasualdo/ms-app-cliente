@@ -4,7 +4,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 import { State } from '@interfaces/reduxInterfaces';
 import Routes from '@constants/routes';
-import { authStackNavConfig, appStackNavConfig, tabStackNavConfig } from '@config/navigation';
+import {
+  authStackNavConfig,
+  appStackNavConfig,
+  tabStackNavConfig,
+  noHeader,
+  appScreensNavOptions
+} from '@config/navigation';
 import { inferRoute } from '@utils/navUtils';
 import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
@@ -15,6 +21,7 @@ import Welcome from '@screens/Auth/screens/Login/screens/Welcome';
 import OnBoarding from '@screens/OnBoarding';
 import Home from '@screens/Home';
 import QrCodeScanner from '@screens/QrCodeScanner';
+import TransactionDetail from '@screens/Transactions/Detail';
 
 const Stack = createStackNavigator();
 // console.disableYellowBox = true;
@@ -31,14 +38,24 @@ const AuthStack = () => (
 );
 
 const Tab = createBottomTabNavigator();
+
+const TabHomeStack = () => (
+  <Stack.Navigator>
+    {inferRoute(Stack)({ [Routes.Home]: Home })}
+    {inferRoute(Stack)({ [Routes.TransactionDetail]: TransactionDetail })}
+  </Stack.Navigator>
+);
+
 function TabNavigator() {
-  return <Tab.Navigator {...tabStackNavConfig}>{inferRoute(Tab)({ [Routes.Home]: Home })}</Tab.Navigator>;
+  return (
+    <Tab.Navigator {...tabStackNavConfig}>{inferRoute(Tab)({ [Routes.Home]: TabHomeStack })}</Tab.Navigator>
+  );
 }
 
 function AppStack() {
   return (
     <>
-      {inferRoute(Stack)({ [Routes.Home]: TabNavigator })}
+      {inferRoute(Stack)({ [Routes.StackHome]: TabNavigator })}
       {inferRoute(Stack)({ [Routes.QrCodeScanner]: QrCodeScanner })}
     </>
   );
@@ -46,8 +63,8 @@ function AppStack() {
 
 const Navigator = () => {
   const currentUser = useSelector((state: State) => state.auth.currentUser);
-  const defaultStackConfig = currentUser ? appStackNavConfig : authStackNavConfig;
-  return <Stack.Navigator {...defaultStackConfig}>{currentUser ? AppStack() : AuthStack()}</Stack.Navigator>;
+  const defaultStackConfig = 1 ? appStackNavConfig : authStackNavConfig;
+  return <Stack.Navigator {...defaultStackConfig}>{1 ? AppStack() : AuthStack()}</Stack.Navigator>;
 };
 
 export default Navigator;

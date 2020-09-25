@@ -6,13 +6,19 @@ import Avatar from '../Avatar';
 
 import styles from './styles';
 
-function HomeHeader() {
+type Props = {
+  title: string;
+  username: string;
+};
+
+function HomeHeader(props: Props) {
+  const { title, username } = props;
   return (
     <SafeAreaView style={styles.container}>
-      <CustomText white xmedium semiBold>
-        Mi tarjeta
+      <CustomText white xbig semiBold>
+        {title}
       </CustomText>
-      <Avatar name="Matias Grote" style={styles.avatar} />
+      <Avatar name={username || ''} style={styles.avatar} />
     </SafeAreaView>
   );
 }

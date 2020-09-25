@@ -44,7 +44,7 @@ export const fontMaker = (options: FontMakerOptions = {}): TextStyle => {
   const { weights, styles } = fonts[family];
 
   if (isAndroid) {
-    weight = weight !== REGULAR && weights?.[weight!] ? weight : '';
+    weight = weight !== REGULAR && weights?.[weight!] ? weight : 'Regular';
     style = style !== NORMAL && styles?.[style!] ? style : '';
 
     family = family.split(' ').join('');
@@ -55,7 +55,7 @@ export const fontMaker = (options: FontMakerOptions = {}): TextStyle => {
     weight = weights?.[weight!] || weights?.[REGULAR] || REGULAR_WEIGHT;
     style = styles?.[style!] || styles?.[NORMAL] || NORMAL_STYLE;
 
-    font = { fontFamily: family, fontWeight: weight, fontStyle: style };
+    font = { fontFamily: `${family}-Regular`, fontWeight: weight, fontStyle: style };
   }
 
   font = size ? { ...font, fontSize: moderateScale(size) } : font;

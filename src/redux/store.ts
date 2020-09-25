@@ -6,11 +6,13 @@ import { ImmutableObject } from 'seamless-immutable';
 import { State } from '@interfaces/reduxInterfaces';
 
 import auth from './auth/reducer';
+import home from './home/reducer';
 
 configureMergeState((state: ImmutableObject<State>, diff: State) => state.merge(diff));
 
 const reducers = combineReducers({
-  auth
+  auth,
+  home
 });
 
 const middlewares = [];
