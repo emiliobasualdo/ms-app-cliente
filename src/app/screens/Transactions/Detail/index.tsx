@@ -25,7 +25,7 @@ function openLink(link: string) {
   });
 }
 
-function DetailRow({ title, subtitle, isLink, link }: DetailRowProps) {
+function DetailRow({ title, subtitle, link }: DetailRowProps) {
   return (
     <View style={styles.aa}>
       <CustomText brandGray semiBold small>

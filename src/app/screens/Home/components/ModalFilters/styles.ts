@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { white } from '@constants/colors';
+import { smokeWhite, white } from '@constants/colors';
 
 import { MARGIN_SCALE } from '../SliderCards/styles';
 
@@ -10,8 +10,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: MARGIN_SCALE
   },
-  ab: { backgroundColor: '#F1F5FB', padding: 4, borderRadius: 16 },
+  ab: { backgroundColor: smokeWhite, padding: 4, borderRadius: 16 },
   ac: { flex: 1, marginHorizontal: MARGIN_SCALE },
+  // eslint-disable-next-line react-native/no-color-literals
   ad: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(13,31,60,0.49)' },
   ae: {
     position: 'absolute',
@@ -31,8 +32,8 @@ export const styles = StyleSheet.create({
   },
   ah: { flexDirection: 'row', justifyContent: 'space-between', marginVertical: MARGIN_SCALE },
   ai: { flexDirection: 'row', marginBottom: MARGIN_SCALE },
-  aj: { backgroundColor: '#F1F5FB', minWidth: 100, marginRight: MARGIN_SCALE },
-  ak: { backgroundColor: '#F1F5FB', minWidth: 100 },
+  aj: { backgroundColor: smokeWhite, minWidth: 100, marginRight: MARGIN_SCALE },
+  ak: { backgroundColor: smokeWhite, minWidth: 100 },
   al: { marginTop: MARGIN_SCALE },
   am: {
     flexDirection: 'row',
@@ -40,6 +41,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: MARGIN_SCALE
   },
-  an: { backgroundColor: '#F1F5FB', padding: 4, borderRadius: 16 },
+  an: { backgroundColor: smokeWhite, padding: 4, borderRadius: 16 },
   ao: { flex: 1, marginHorizontal: MARGIN_SCALE }
 });

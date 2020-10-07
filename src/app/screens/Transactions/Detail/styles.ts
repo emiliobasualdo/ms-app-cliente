@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
   ab: { backgroundColor: white, flex: 1, paddingHorizontal: MARGIN, marginBottom: 52 },
   ac: { marginBottom: MARGIN, marginTop: MARGIN },
   ad: { height: WINDOW_WIDTH * 0.35, justifyContent: 'center', alignItems: 'center' },
+  // eslint-disable-next-line react-native/no-color-literals
   ae: {
     flexDirection: 'row',
     borderColor: 'rgba(207,210,216,0.51)',

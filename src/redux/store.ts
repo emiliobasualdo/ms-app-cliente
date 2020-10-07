@@ -24,6 +24,11 @@ middlewares.push(thunk);
 /* ------------- Redux-Recompose Middleware ------------- */
 middlewares.push(fetchMiddleware);
 
+if (__DEV__) {
+  const createDebugger = require('redux-flipper').default;
+  middlewares.push(createDebugger());
+}
+
 /* ------------- Assemble Middleware ------------- */
 enhancers.push(applyMiddleware(...middlewares));
 

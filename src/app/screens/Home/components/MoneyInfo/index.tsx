@@ -7,7 +7,6 @@ import React from 'react';
 
 type Props = {
   amount: number;
-
 };
 
 function MoneyInfo(props: Props) {

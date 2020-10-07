@@ -10,9 +10,16 @@ import CustomBottomTab from '@components/CustomBottomTab/index';
 import { IS_SMALL_DEVICE } from '@constants/platform';
 import CustomHeader from '@components/CustomHeader';
 import icBack from '@app/assets/icBack.png';
-import { Image, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 import fonts from './fonts';
+
+const styleButton = StyleSheet.create({
+  aa: {
+    width: 30,
+    height: 30
+  }
+});
 
 // Default nav options for all screens
 const defaultNavOptions = ({ route }: Navigation) => ({
@@ -29,7 +36,7 @@ const defaultNavOptions = ({ route }: Navigation) => ({
     ...fonts.baseFont,
     color: white
   },
-  headerBackImage: () => <Image source={icBack} style={{ width: 30, height: 30 }} />,
+  headerBackImage: () => <Image source={icBack} style={styleButton.aa} />,
   headerTintColor: white
 });
 
@@ -57,7 +64,7 @@ export const appStackNavConfig = {
 
 export const authStackNavConfig = {
   screenOptions: defaultNavOptions,
-  initialRouteName: Routes.Welcome
+  initialRouteName: Routes.Login
 };
 
 const defaultTabNavOptions = {};
@@ -98,8 +105,8 @@ export const appScreensNavOptions = {
       elevation: 0,
       shadowColor: white
     },
-    headerBackImage: () => <Image source={icBack} style={{ width: 30, height: 30 }} />,
-    headerRight: () => <View style={{ width: 30, height: 30 }} />,
+    headerBackImage: () => <Image source={icBack} style={styleButton.aa} />,
+    headerRight: () => <View style={styleButton.aa} />,
     headerTransparent: false,
     headerTitle: (props: any) => <CustomHeader navigation={navigation} title={'Movimiento'} {...props} />
   }),
@@ -115,7 +122,7 @@ export const statusBarStyles = {
   [Routes.SignUpSuccess]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Welcome]: statusBarConfig.transparentStatusBarWhite,
   [Routes.QrCodeScanner]: statusBarConfig.transparentStatusBarWhite,
-  [Routes.Home]: statusBarConfig.whiteStatusBar,
+  [Routes.Home]: statusBarConfig.transparentStatusBarWhite,
   [Routes.TransactionDetail]: statusBarConfig.whiteStatusBar,
   default: statusBarConfig.transparentStatusBar
 };

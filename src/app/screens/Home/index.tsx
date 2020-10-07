@@ -12,11 +12,12 @@ import { WINDOW_HEIGHT, WINDOW_WIDTH } from '@constants/platform';
 import MoneyInfo from '@screens/Home/components/MoneyInfo';
 import { useFocusEffect } from '@react-navigation/native';
 import ModalFilters from '@screens/Home/components/ModalFilters';
-import AnimateTransactionList from '@screens/Home/components/TransactionsList';
+import AnimateTransactionList from '@screens/Home/components/AnimateTransactionList';
 import { ShowAlertProps, withCustomAlert } from '@components/withCustomAlert';
 import { ShowToastProps, withCustomToast } from '@components/withCustomToast';
 import { ITransaction } from '@screens/Transactions/components/TrancationItem';
 import { actionCreators as TransactionActions } from '@redux/home/actions';
+import { actionCreators as AuthActions } from '@redux/auth/actions';
 
 import HomeHeader from './components/HomeHeader';
 import styles from './styles';
@@ -45,7 +46,7 @@ function Home({
   navigation: any;
 }) {
   // Uncomment to logout when API is ready
-  // const handleLogout = useCallback(() => dispatch(AuthActions.logout()), [dispatch]);
+  const handleLogout = React.useCallback(() => dispatch(AuthActions.logout()), [dispatch]);
 
   const refScrollView = React.useRef(null);
   const animatedValue = React.useRef(new Animated.Value(0)).current;
@@ -100,6 +101,7 @@ function Home({
 
   React.useEffect(() => {
     dispatch(TransactionActions.getTransactions());
+    dispatch(TransactionActions.getHomeData());
   }, [dispatch]);
 
   return (
@@ -128,7 +130,7 @@ function Home({
             {/**
              * Header
              */}
-            <HomeHeader title={'Mi tarjeta'} username={'User Name'} />
+            <HomeHeader title={'Mi tarjeta'} username={'User Name'} onPress={handleLogout} />
 
             {/**
              * Informacion de saldo

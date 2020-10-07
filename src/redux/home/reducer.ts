@@ -1,10 +1,10 @@
-import { createReducer, completeReducer, completeState, onReadValue } from 'redux-recompose';
+import { createReducer, completeReducer, completeState } from 'redux-recompose';
 import Immutable from 'seamless-immutable';
 
 import { actions } from './actions';
 
 const reducerDescription = {
-  primaryActions: [actions.GET_TRANSACTIONS]
+  primaryActions: [actions.GET_TRANSACTIONS, actions.GET_DATA]
 };
 
 const stateDescription = {

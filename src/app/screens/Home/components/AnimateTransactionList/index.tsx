@@ -62,7 +62,7 @@ function AnimateTransactionList(props: {
     <FlingGestureHandler
       direction={Directions.UP}
       onHandlerStateChange={e => {
-        if (props.transactions.length) {
+        if (props.transactions?.length) {
           props.onSwipeUpGesture(e);
         }
       }}>

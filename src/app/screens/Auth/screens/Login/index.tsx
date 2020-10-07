@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import i18next from 'i18next';
@@ -10,6 +9,8 @@ import { CustomTextInputFormikField } from '@components/CustomTextInput';
 import Routes from '@constants/routes';
 import { Navigation } from '@interfaces/navigation';
 import { FIELDS, LOGIN_INITIAL_VALUES } from '@screens/Auth/constants';
+import { useDispatch } from 'react-redux';
+import { actionCreators as AuthActions } from '@redux/auth/actions';
 import {
   validationsWrapper,
   validateRequired,
@@ -22,7 +23,13 @@ import styles from './styles';
 
 function Login({ navigation }: Navigation) {
   // TODO: Cambiar handleLogin, agregar pegarle al endpoint y si da 200 redirigir al codeVerif sino a SignUp
-  const handleLogin = () => navigation.navigate(Routes.SignUp);
+  const dispatch = useDispatch();
+  const handleLogin = ({ prefix, phoneNumber: _phoneNumber }: any) => {
+    const phoneNumber = String(prefix) + String(_phoneNumber);
+    dispatch(AuthActions.sendSMS(phoneNumber));
+    navigation.navigate(Routes.VerificationCode, { phoneNumber });
+  };
+
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={styles.contentContainer}
@@ -32,7 +39,7 @@ function Login({ navigation }: Navigation) {
       keyboardShouldPersistTaps="always">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Formik onSubmit={handleLogin} initialValues={LOGIN_INITIAL_VALUES}>
-          {({ handleSubmit, isValid }) => (
+          {({ values }) => (
             <View style={styles.formContainer}>
               <View style={styles.mainContainer}>
                 <CustomText brandGray semiBold>
@@ -66,7 +73,9 @@ function Login({ navigation }: Navigation) {
                   />
                 </View>
                 <CustomButton
-                  onPress={handleLogin}
+                  onPress={() => {
+                    handleLogin(values);
+                  }}
                   primary
                   semiBold
                   textStyle={styles.buttonText}

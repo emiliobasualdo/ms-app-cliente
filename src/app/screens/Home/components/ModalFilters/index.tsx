@@ -11,7 +11,7 @@ import icCheckboxActive from '@app/assets/icCheckboxActive.png';
 
 import { styles } from './styles';
 
-function CustomCheckbox(props: { active: boolean; onChange: () => void; label: string; in: boolean }) {
+function CustomCheckbox(props: { active?: boolean; onChange?: () => void; label: string; in?: boolean }) {
   return (
     <TouchableOpacity onPress={props.onChange}>
       <View style={styles.aa}>
@@ -105,24 +105,12 @@ const ModalFilters = (props: {
             </Pressable>
           </View>
           <View style={styles.ai}>
-            <CustomButton title={'Todos'} radial blue semiBold style={styles.aj} />
-            <CustomButton title={'Limpiar'} radial blue semiBold style={styles.ak} />
+            <CustomButton title={'Todos'} radial blue semiBold style={styles.aj} onPress={() => 1} />
+            <CustomButton title={'Limpiar'} radial blue semiBold style={styles.ak} onPress={() => 1} />
           </View>
           <View style={styles.al}>
-            <CustomCheckbox
-              active
-              label={'Compra'}
-              onChange={() => {
-                console.warn('change');
-              }}
-            />
-            <CustomCheckbox
-              in
-              label={'Ingreso'}
-              onChange={() => {
-                console.warn('change');
-              }}
-            />
+            <CustomCheckbox active label={'Compra'} />
+            <CustomCheckbox in label={'Ingreso'} />
           </View>
         </Animated.View>
       </View>

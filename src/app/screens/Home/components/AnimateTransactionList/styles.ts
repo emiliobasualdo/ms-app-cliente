@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { MARGIN, WINDOW_HEIGHT } from '@constants/platform';
+import { lightGray } from '@constants/colors';
 
 export const styles = StyleSheet.create({
   aa: {
@@ -10,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   ab: { height: WINDOW_HEIGHT - 200 },
   ac: { marginBottom: MARGIN / 2, marginHorizontal: MARGIN },
-  ad: { color: '#979797', marginHorizontal: MARGIN },
+  ad: { color: lightGray, marginHorizontal: MARGIN },
   ae: {
     marginTop: MARGIN
   }

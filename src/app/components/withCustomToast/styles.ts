@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     left: 0,
     right: 0
   },
+  // eslint-disable-next-line react-native/no-color-literals
   ac: {
     backgroundColor: 'rgba(57,173,235,0.8)',
     marginHorizontal: MARGIN,

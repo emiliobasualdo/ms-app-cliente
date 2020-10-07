@@ -4,13 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 import { State } from '@interfaces/reduxInterfaces';
 import Routes from '@constants/routes';
-import {
-  authStackNavConfig,
-  appStackNavConfig,
-  tabStackNavConfig,
-  noHeader,
-  appScreensNavOptions
-} from '@config/navigation';
+import { authStackNavConfig, appStackNavConfig, tabStackNavConfig } from '@config/navigation';
 import { inferRoute } from '@utils/navUtils';
 import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
@@ -28,8 +22,8 @@ const Stack = createStackNavigator();
 const AuthStack = () => (
   <>
     {inferRoute(Stack)({ [Routes.Welcome]: Welcome })}
-    {inferRoute(Stack)({ [Routes.OnBoarding]: OnBoarding })}
     {inferRoute(Stack)({ [Routes.Login]: Login })}
+    {inferRoute(Stack)({ [Routes.OnBoarding]: OnBoarding })}
     {inferRoute(Stack)({ [Routes.SignUp]: SignUp })}
     {inferRoute(Stack)({ [Routes.StepTwo]: StepTwoSignUp })}
     {inferRoute(Stack)({ [Routes.SignUpSuccess]: SignUpSuccess })}
@@ -63,8 +57,8 @@ function AppStack() {
 
 const Navigator = () => {
   const currentUser = useSelector((state: State) => state.auth.currentUser);
-  const defaultStackConfig = 1 ? appStackNavConfig : authStackNavConfig;
-  return <Stack.Navigator {...defaultStackConfig}>{1 ? AppStack() : AuthStack()}</Stack.Navigator>;
+  const defaultStackConfig = currentUser ? appStackNavConfig : authStackNavConfig;
+  return <Stack.Navigator {...defaultStackConfig}>{currentUser ? AppStack() : AuthStack()}</Stack.Navigator>;
 };
 
 export default Navigator;

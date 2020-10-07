@@ -7,13 +7,15 @@ import styles from './styles';
 
 interface Props {
   name: string;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
 function Avatar({ name, style }: Props) {
   return (
     <View style={[styles.container, style]}>
-      <CustomText xsmall style={styles.textStyles}>{getInitials(name)}</CustomText>
+      <CustomText xsmall style={styles.textStyles}>
+        {getInitials(name)}
+      </CustomText>
     </View>
   );
 }
