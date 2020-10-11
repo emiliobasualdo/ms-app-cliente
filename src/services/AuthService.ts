@@ -1,11 +1,10 @@
 import { ApiResponse } from 'apisauce';
 import AsyncStorage from '@react-native-community/async-storage';
 import api from '@config/api';
-import { CurrentUser, AuthData, SignUpData } from '@interfaces/authInterfaces';
+import { AuthData, CurrentUser, SignUpData } from '@interfaces/authInterfaces';
 import { getOnBoardingAccess } from '@services/OnBoardingService';
 
 const CURRENT_USER_KEY = '@Auth:currentUser';
-const AUTH_EP = '/auth';
 
 // TODO: Adapt returned object to:
 //   sessionToken: usually currentUser.access_token
@@ -29,7 +28,11 @@ export const authSetup = async () => {
   return { currentUser, hasAccess };
 };
 
-export const login = ({ code, phoneNumber }: AuthData) => api.post(`${AUTH_EP}/login`, { phoneNumber, code });
+export const sendSMS = (phoneNumber: string) => {
+  return api.post('/auth/sms-code', { phoneNumber });
+};
+
+export const login = ({ code, phoneNumber }: AuthData) => api.post(`/auth/login`, { phoneNumber, code });
 
 export const logout = () => {
   // TODO: Implement call to authentication API here

@@ -26,3 +26,5 @@ export const REFERENCE_HEIGHT = 650;
 const USE_WIDTH = WINDOW_WIDTH / REFERENCE_WIDTH < WINDOW_HEIGHT / REFERENCE_HEIGHT;
 export const REF_RATIO = USE_WIDTH ? WINDOW_WIDTH / REFERENCE_WIDTH : WINDOW_HEIGHT / REFERENCE_HEIGHT;
 export const refRatioScale = (value: number) => value * REF_RATIO;
+
+export const MARGIN = 24;

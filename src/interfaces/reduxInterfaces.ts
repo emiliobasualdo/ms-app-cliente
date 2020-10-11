@@ -31,6 +31,7 @@ export interface AuthState {
 
 export interface State {
   auth: AuthState;
+  home: any;
 }
 
 export interface ReduxObject {

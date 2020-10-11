@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { brandLightBlue, brandGray, white, brandBlue } from '@constants/colors';
+import { brandLightBlue, brandGray, white, brandBlue, danger } from '@constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -40,5 +40,12 @@ export default StyleSheet.create({
   },
   focusCell: {
     borderColor: brandBlue
+  },
+  aa: {
+    backgroundColor: danger,
+    borderRadius: 28,
+    height: 56,
+    paddingHorizontal: 24,
+    justifyContent: 'center'
   }
 });

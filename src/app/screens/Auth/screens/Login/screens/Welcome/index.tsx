@@ -10,6 +10,7 @@ import { gradientColorArray } from '@constants/colors';
 import Routes from '@constants/routes';
 
 import styles from './styles';
+
 import '../../i18n';
 
 function Welcome({ navigation }: Navigation) {

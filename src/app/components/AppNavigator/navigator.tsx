@@ -15,14 +15,15 @@ import Welcome from '@screens/Auth/screens/Login/screens/Welcome';
 import OnBoarding from '@screens/OnBoarding';
 import Home from '@screens/Home';
 import QrCodeScanner from '@screens/QrCodeScanner';
+import TransactionDetail from '@screens/Transactions/Detail';
 
 const Stack = createStackNavigator();
 // console.disableYellowBox = true;
 const AuthStack = () => (
   <>
     {inferRoute(Stack)({ [Routes.Welcome]: Welcome })}
-    {inferRoute(Stack)({ [Routes.OnBoarding]: OnBoarding })}
     {inferRoute(Stack)({ [Routes.Login]: Login })}
+    {inferRoute(Stack)({ [Routes.OnBoarding]: OnBoarding })}
     {inferRoute(Stack)({ [Routes.SignUp]: SignUp })}
     {inferRoute(Stack)({ [Routes.StepTwo]: StepTwoSignUp })}
     {inferRoute(Stack)({ [Routes.SignUpSuccess]: SignUpSuccess })}
@@ -31,14 +32,24 @@ const AuthStack = () => (
 );
 
 const Tab = createBottomTabNavigator();
+
+const TabHomeStack = () => (
+  <Stack.Navigator>
+    {inferRoute(Stack)({ [Routes.Home]: Home })}
+    {inferRoute(Stack)({ [Routes.TransactionDetail]: TransactionDetail })}
+  </Stack.Navigator>
+);
+
 function TabNavigator() {
-  return <Tab.Navigator {...tabStackNavConfig}>{inferRoute(Tab)({ [Routes.Home]: Home })}</Tab.Navigator>;
+  return (
+    <Tab.Navigator {...tabStackNavConfig}>{inferRoute(Tab)({ [Routes.Home]: TabHomeStack })}</Tab.Navigator>
+  );
 }
 
 function AppStack() {
   return (
     <>
-      {inferRoute(Stack)({ [Routes.Home]: TabNavigator })}
+      {inferRoute(Stack)({ [Routes.StackHome]: TabNavigator })}
       {inferRoute(Stack)({ [Routes.QrCodeScanner]: QrCodeScanner })}
     </>
   );

@@ -6,11 +6,13 @@ import { ImmutableObject } from 'seamless-immutable';
 import { State } from '@interfaces/reduxInterfaces';
 
 import auth from './auth/reducer';
+import home from './home/reducer';
 
 configureMergeState((state: ImmutableObject<State>, diff: State) => state.merge(diff));
 
 const reducers = combineReducers({
-  auth
+  auth,
+  home
 });
 
 const middlewares = [];
@@ -21,6 +23,11 @@ middlewares.push(thunk);
 
 /* ------------- Redux-Recompose Middleware ------------- */
 middlewares.push(fetchMiddleware);
+
+if (__DEV__) {
+  const createDebugger = require('redux-flipper').default;
+  middlewares.push(createDebugger());
+}
 
 /* ------------- Assemble Middleware ------------- */
 enhancers.push(applyMiddleware(...middlewares));
