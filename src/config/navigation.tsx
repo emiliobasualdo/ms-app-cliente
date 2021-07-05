@@ -2,14 +2,24 @@ import React from 'react';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { blue, brandDarkBlue, white } from '@constants/colors';
+import { black, blue, brandDarkBlue, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 import { SIZES } from '@constants/fonts';
 import CustomBottomTab from '@components/CustomBottomTab/index';
 import { IS_SMALL_DEVICE } from '@constants/platform';
+import CustomHeader from '@components/CustomHeader';
+import icBack from '@app/assets/icBack.png';
+import { Image, StyleSheet, View } from 'react-native';
 
 import fonts from './fonts';
+
+const styleButton = StyleSheet.create({
+  aa: {
+    width: 30,
+    height: 30
+  }
+});
 
 // Default nav options for all screens
 const defaultNavOptions = ({ route }: Navigation) => ({
@@ -26,10 +36,11 @@ const defaultNavOptions = ({ route }: Navigation) => ({
     ...fonts.baseFont,
     color: white
   },
+  headerBackImage: () => <Image source={icBack} style={styleButton.aa} />,
   headerTintColor: white
 });
 
-const transparentHeader = (fontColor: string) => ({
+const transparentHeader = (fontColor?: string) => ({
   headerStyle: {
     backgroundColor: 'transparent',
     borderBottomWidth: 0
@@ -53,7 +64,7 @@ export const appStackNavConfig = {
 
 export const authStackNavConfig = {
   screenOptions: defaultNavOptions,
-  initialRouteName: Routes.Welcome
+  initialRouteName: Routes.Login
 };
 
 const defaultTabNavOptions = {};
@@ -80,12 +91,28 @@ export const appScreensNavOptions = {
   [Routes.VerificationCode]: authCommonOptions(),
   [Routes.SignUp]: authCommonOptions('Crear cuenta'),
   [Routes.StepTwo]: authCommonOptions('Crear cuenta'),
+  [Routes.QrCodeScanner]: { ...transparentHeader(black), headerTitle: 'Pagá con código QR' },
   [Routes.OnBoarding]: {
     headerShown: false
   },
   [Routes.Home]: noHeader,
+  [Routes.TransactionDetail]: ({ navigation }: any) => ({
+    ...transparentHeader(brandDarkBlue),
+    headerStyle: {
+      backgroundColor: white,
+      borderBottomWidth: 0,
+      borderBottomColor: white,
+      elevation: 0,
+      shadowColor: white
+    },
+    headerBackImage: () => <Image source={icBack} style={styleButton.aa} />,
+    headerRight: () => <View style={styleButton.aa} />,
+    headerTransparent: false,
+    headerTitle: (props: any) => <CustomHeader navigation={navigation} title={'Movimiento'} {...props} />
+  }),
   [Routes.SignUpSuccess]: noHeader,
-  [Routes.Welcome]: noHeader
+  [Routes.Welcome]: noHeader,
+  [Routes.StackHome]: noHeader
 };
 
 export const statusBarStyles = {
@@ -94,7 +121,9 @@ export const statusBarStyles = {
   [Routes.SignUp]: statusBarConfig.transparentStatusBar,
   [Routes.SignUpSuccess]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Welcome]: statusBarConfig.transparentStatusBarWhite,
+  [Routes.QrCodeScanner]: statusBarConfig.transparentStatusBarWhite,
   [Routes.Home]: statusBarConfig.transparentStatusBarWhite,
+  [Routes.TransactionDetail]: statusBarConfig.whiteStatusBar,
   default: statusBarConfig.transparentStatusBar
 };
 

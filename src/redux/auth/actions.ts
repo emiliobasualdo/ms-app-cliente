@@ -8,7 +8,15 @@ import { Action } from '@interfaces/reduxInterfaces';
 export const actions = createTypes(
   completeTypes(
     ['LOGIN', 'LOGOUT'],
-    ['AUTH_INIT', 'HAS_ACCESS', 'SET_USER_NAME', 'SET_USER_SURNAME', 'SET_USER_DNI', 'SET_USER_DATE_OF_BIRTH']
+    [
+      'AUTH_INIT',
+      'HAS_ACCESS',
+      'SET_USER_NAME',
+      'SET_USER_SURNAME',
+      'SET_USER_DNI',
+      'SET_USER_DATE_OF_BIRTH',
+      'SEND_SMS'
+    ]
   ),
   '@@AUTH'
 );
@@ -19,7 +27,8 @@ const TARGETS = {
   USER_NAME: 'userName',
   USER_SURNAME: 'userSurname',
   USER_DNI: 'userDNI',
-  USER_DATE_OF_BIRTH: 'userDateOfBirth'
+  USER_DATE_OF_BIRTH: 'userDateOfBirth',
+  LOGIN: 'loginProcess'
 };
 
 export const actionCreators = {
@@ -72,5 +81,11 @@ export const actionCreators = {
     type: actions.SET_USER_DNI,
     target: TARGETS.USER_DNI,
     payload: DNI
+  }),
+  sendSMS: (phoneNumber: string) => ({
+    type: actions.SEND_SMS,
+    service: AuthService.sendSMS,
+    target: TARGETS.USER_DNI,
+    payload: phoneNumber
   })
 };

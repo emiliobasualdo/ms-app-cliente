@@ -7,10 +7,14 @@ const Routes: StringObject = {
   OnBoarding: 'OnBoarding',
   App: 'App',
   Home: 'Home',
+  StackHome: 'StackHome',
+  Transactions: 'Transactions',
+  TransactionDetail: 'TransactionDetail',
   VerificationCode: 'VerificationCode',
   StepTwo: 'StepTwo',
   SignUpSuccess: 'SignUpSuccess',
-  Welcome: 'Welcome'
+  Welcome: 'Welcome',
+  QrCodeScanner: 'QrCodeScanner'
 };
 
 export default Routes;

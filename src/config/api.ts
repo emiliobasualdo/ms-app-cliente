@@ -23,12 +23,14 @@ export const apiSetup = (dispatch: Dispatch<any>) => {
   api.addMonitor(response => {
     if (response.status === 401) {
       // dispatch(actions.sessionExpired());
+      // eslint-disable-next-line no-console
       console.warn('Unhandled session expiration');
     }
   });
   api.addMonitor(response => {
     if (response.problem === NETWORK_ERROR) {
       // dispatch(actions.noInternetConnection());
+      // eslint-disable-next-line no-console
       console.warn('Unhandled request without connection');
     }
   });
